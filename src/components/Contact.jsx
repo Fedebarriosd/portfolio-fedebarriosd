@@ -14,7 +14,7 @@ const Contact = () => {
           className="mx-auto"
           style={{ maxWidth: '600px' }}
         >
-          <input type="hidden" name="_redirect" value="https://tusitio.vercel.app/gracias" />
+          <input type="hidden" name="_redirect" value="https://portfolio-fedebarriosd.vercel.app/gracias" />
 
           <div className="mb-3">
             <label className="form-label">Tu nombre</label>
