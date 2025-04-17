@@ -1,0 +1,59 @@
+:root {
+  --verde-oscuro: #328E6E;
+  --verde-medio: #67AE6E;
+  --verde-claro: #90C67C;
+  --crema: #f5f5dc;
+  --texto-claro: #ffffff;
+  --texto-oscuro: #1a1a1a;
+}
+
+h1, h2, h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.bg-verde-oscuro {
+  background-color: var(--verde-oscuro) !important;
+}
+
+.bg-verde-medio {
+  background-color: var(--verde-medio) !important;
+}
+
+.bg-verde-claro {
+  background-color: var(--verde-claro) !important;
+}
+
+.bg-crema {
+  background-color: var(--crema) !important;
+}
+
+.texto-claro {
+  color: var(--texto-claro) !important;
+}
+
+.texto-oscuro {
+  color: var(--texto-oscuro) !important;
+}
+
+.btn-verde {
+  background-color: var(--verde-claro);
+  color: var(--texto-oscuro);
+  border: none;
+}
+
+.btn-verde:hover {
+  background-color: var(--verde-medio);
+}
+
+.skill-icon {
+  transition: transform 0.3s ease;
+}
+
+.skill-icon:hover {
+  transform: scale(1.2);
+}
