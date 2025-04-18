@@ -27,7 +27,7 @@ const ProgheadsLanding = () => {
               <FaInstagram size={40} />
             </a>
             <a
-              href="https://open.spotify.com/user/31f7zmmq4iior2j6e7jioawqeidq"
+              href="https://open.spotify.com/user/315ootae35fgsxa3yxg3njshvq3y"
               className="icon-hover text-light"
               target="_blank"
               rel="noopener noreferrer"

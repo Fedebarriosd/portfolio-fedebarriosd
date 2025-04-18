@@ -5,22 +5,30 @@ const playlists = [
   {
     id: 1,
     title: 'Esenciales Prog Rock',
-    embedUrl: '<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/19U1kI7h1DrtXIgoMIrI8O?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>'
+    cover: '/Esenciales-progrock.png',
+    url: 'https://open.spotify.com/playlist/19U1kI7h1DrtXIgoMIrI8O?si=377e2ca7125945b7',
+    description: 'Las piezas fundamentales del prog clásico: épica, poesía británica y teclados interminables.'
   },
   {
     id: 2,
     title: 'Esenciales Prog Metal',
-    embedUrl: '<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/4IVt1rwTIvJ63PHPD3Sm1q?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>'
+    cover: '/Esenciales-progmetal.png',
+    url: 'https://open.spotify.com/playlist/4IVt1rwTIvJ63PHPD3Sm1q?si=a15d0ef1be29428b',
+    description: 'Lo más fino del metal progresivo: técnica brutal, riffs laberínticos y sensibilidad melódica.'
   },
   {
     id: 3,
     title: 'Gemas Ocultas Prog Rock',
-    embedUrl: '<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/6FKuiIF9pYWcOCM7QRrJHN?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>'
+    cover: '/Joyas-progrock.png',
+    url: 'https://open.spotify.com/playlist/6FKuiIF9pYWcOCM7QRrJHN?si=3eb0267b7baf4e69',
+    description: 'Bandas olvidadas, discos raros, joyas que nunca llegaron al mainstream… hasta ahora.'
   },
   {
     id: 4,
     title: 'Gemas Ocultas Prog Metal',
-    embedUrl: '<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/3PuQ0wXNOML7M7AFIaXu39?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>'
+    cover: '/Joyas-progmetal.png',
+    url: 'https://open.spotify.com/playlist/3PuQ0wXNOML7M7AFIaXu39?si=f42ef1ff9a8e44a2',
+    description: 'Metal progresivo subterráneo y experimental para almas que buscan complejidad sin concesiones.'
   }
 ];
 
@@ -33,18 +41,17 @@ const PlaylistCards = () => {
           {playlists.map((pl) => (
             <div className="col-12 col-md-6" key={pl.id}>
               <div className="playlist-card p-3 h-100">
-                <h5 className="playlist-title mb-3">{pl.title}</h5>
-                <div className="ratio ratio-16x9">
-                  <iframe
-                    src={pl.embedUrl}
-                    width="100%"
-                    height="152"
-                    frameBorder="0"
-                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                    loading="lazy"
-                    title={pl.title}
-                  ></iframe>
-                </div>
+                <h5 className="playlist-title mb-2">{pl.title}</h5>
+                {pl.description && (
+                  <p className="playlist-description">{pl.description}</p>
+                )}
+                <a href={pl.url} target="_blank" rel="noopener noreferrer">
+                  <img
+                    src={pl.cover}
+                    alt={pl.title}
+                    className="img-fluid playlist-cover"
+                  />
+                </a>
               </div>
             </div>
           ))}

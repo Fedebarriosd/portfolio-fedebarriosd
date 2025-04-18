@@ -143,3 +143,21 @@
     text-shadow: 1px 1px 4px #000;
   }
   
+  .playlist-description {
+    font-size: 0.95rem;
+    color: #e4e0cc;
+    font-style: italic;
+    margin-bottom: 1rem;
+  }
+  
+  .playlist-cover {
+    border: 2px solid #d4af37;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #00000088;
+    transition: transform 0.3s ease;
+  }
+  
+  .playlist-cover:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 15px #d4af37aa;
+  }
