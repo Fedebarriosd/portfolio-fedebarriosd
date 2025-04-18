@@ -5,9 +5,13 @@ import { FaInstagram, FaSpotify } from 'react-icons/fa';
 const ProgheadsLanding = () => {
   return (
     <div className="progheads-bg text-light">
+    <img src="/ornamento-esquina.png" className="corner corner-top-left" alt="decoración esquina" />
+    <img src="/ornamento-esquina.png" className="corner corner-top-right" alt="decoración esquina" />
+    <img src="/ornamento-esquina.png" className="corner corner-bottom-left" alt="decoración esquina" />
+    <img src="/ornamento-esquina.png" className="corner corner-bottom-right" alt="decoración esquina" />
       <section className="progheads-hero text-center py-5">
         <div className="container">
-          <h1 className="display-3 progheads-title">🎭 Progheads_PY</h1>
+          <h1 className="display-3 progheads-title">Progheads_PY</h1>
           <p className="lead progheads-subtitle">
             Explorando los rincones más teatrales y exuberantes del progresivo
           </p>
@@ -44,9 +48,9 @@ const ProgheadsLanding = () => {
       <section className="progheads-section py-5 bg-dark-subtle text-light">
         <div className="container">
           <h2 className="mb-4">🎧 Playlists destacadas</h2>
-          <p>
+          <p style={{ color: '#111c2d' }}>
             Próximamente: links a playlists esenciales, gemas ocultas y recorridos temáticos por el universo del prog.
-          </p>
+        </p>
         </div>
       </section>
     </div>
