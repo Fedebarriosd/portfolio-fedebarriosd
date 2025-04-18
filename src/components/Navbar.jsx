@@ -11,7 +11,7 @@ const MyNavbar = () => {
           <Nav.Link href="#about">Sobre mí</Nav.Link>
           <Nav.Link href="#projects">Proyectos</Nav.Link>
           <Nav.Link href="#skills">Skills</Nav.Link>
-          <Nav.Link href="#MiniProgheads">Progheads_PY</Nav.Link>
+          <Nav.Link href="#progheads">Progheads_PY</Nav.Link>
           <Nav.Link href="#contact">Contacto</Nav.Link>
         </Nav>
       </Navbar.Collapse>

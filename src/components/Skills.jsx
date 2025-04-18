@@ -6,7 +6,7 @@ import {
   SiSqlite,
   SiGit,
 } from 'react-icons/si';
-import { FaGithub, FaUserGraduate, FaGlobeAmericas } from 'react-icons/fa';
+import { FaGithub, FaUserGraduate } from 'react-icons/fa';
 import { PiFlowArrowBold } from 'react-icons/pi'; // Ícono para PseInt
 import '../styles/skills.css';
 
@@ -20,16 +20,20 @@ const Skills = () => {
         <h4 className="mb-4">Lenguajes de Programación</h4>
         <div className="row justify-content-center mb-5">
           <div className="col-4 col-md-2 skill-item">
-            <PiFlowArrowBold size={40} />
-            <p>PseInt</p>
-          </div>
-          <div className="col-4 col-md-2 skill-item">
             <SiC size={40} />
             <p>C</p>
           </div>
           <div className="col-4 col-md-2 skill-item">
+            <SiCplusplus size={40} />
+            <p>C++</p>
+          </div>
+          <div className="col-4 col-md-2 skill-item">
             <img src="/icons/csharp.png" alt="C#" style={{ width: '40px' }} />
              <p>C#</p>
+          </div>
+          <div className="col-4 col-md-2 skill-item">
+            <PiFlowArrowBold size={40} />
+            <p>PseInt</p>
           </div>
 
 
@@ -67,7 +71,11 @@ const Skills = () => {
             <p>Técnico Informático</p>
           </div>
           <div className="col-4 col-md-2 skill-item">
-            <FaGlobeAmericas size={40} />
+          <img
+            src="/icons/uk-flag.png"
+            alt="Bilingüe Inglés"
+            style={{ width: '40px', height: '40px', objectFit: 'contain' }}
+          />
             <p>Bilingüe Inglés</p>
           </div>
         </div>
