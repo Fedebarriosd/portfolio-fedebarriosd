@@ -1,5 +1,5 @@
 import React from 'react';
-import './progheads.css';
+import '../styles/progheads.css';
 import { FaInstagram, FaSpotify } from 'react-icons/fa';
 
 const ProgheadsLanding = () => {
