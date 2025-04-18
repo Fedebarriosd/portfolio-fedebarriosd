@@ -1,51 +1,77 @@
 import React from 'react';
-import { FaReact, FaGithub } from 'react-icons/fa';
-import { BsBootstrap } from 'react-icons/bs';
-import { SiJavascript, SiCsharp, SiSqlite } from 'react-icons/si';
+import {
+  SiC,
+  SiCplusplus,
+  SiPostgresql,
+  SiSqlite,
+  SiGit,
+} from 'react-icons/si';
+import { FaGithub, FaUserGraduate, FaGlobeAmericas } from 'react-icons/fa';
+import { PiFlowArrowBold } from 'react-icons/pi'; // Ícono para PseInt
+import '../styles/skills.css';
 
 const Skills = () => {
   return (
-    <section id="skills" className="p-5 bg-crema texto-oscuro">
+    <section id="skills" className="py-5 bg-light text-center">
       <div className="container">
-        <h2 className="mb-4">Skills</h2>
-        <div className="row row-cols-2 row-cols-md-3 row-cols-lg-6 g-4 text-center">
+        <h2 className="mb-5">Habilidades Técnicas</h2>
 
-          <div>
-            <FaReact className='skill-icon' size={50} color="#61DBFB" />
-            <p>React</p>
+        {/* Lenguajes de Programación */}
+        <h4 className="mb-4">Lenguajes de Programación</h4>
+        <div className="row justify-content-center mb-5">
+          <div className="col-4 col-md-2 skill-item">
+            <PiFlowArrowBold size={40} />
+            <p>PseInt</p>
+          </div>
+          <div className="col-4 col-md-2 skill-item">
+            <SiC size={40} />
+            <p>C</p>
+          </div>
+          <div className="col-4 col-md-2 skill-item">
+            <img src="/icons/csharp.png" alt="C#" style={{ width: '40px' }} />
+             <p>C#</p>
           </div>
 
-          <div>
-            <BsBootstrap className='skill-icon' size={50} color="#7952B3" />
-            <p>Bootstrap</p>
-          </div>
 
-          <div>
-            <SiJavascript className='skill-icon' size={50} color="#F7DF1E" />
-            <p>JavaScript</p>
+        {/* Bases de Datos */}
+        <h4 className="mb-4">Bases de Datos</h4>
+        <div className="row justify-content-center mb-5">
+          <div className="col-4 col-md-2 skill-item">
+            <SiPostgresql size={40} />
+            <p>PostgreSQL</p>
           </div>
-
-          <div>
-          <img
-            src="/Csharp_Logo.png"
-            alt="C#"
-            style={{ width: '50px', height: '50px', transition: 'transform 0.3s ease', verticalAlign: 'middle'}}
-            className="skill-icon"
-          />
-            <p>C#</p>
-          </div>
-
-          <div>
-            <SiSqlite className='skill-icon' size={50} color="#003B57" />
+          <div className="col-4 col-md-2 skill-item">
+            <SiSqlite size={40} />
             <p>SQLite</p>
           </div>
+        </div>
 
-          <div>
-            <FaGithub className='skill-icon' size={50} color="#000000" />
+        {/* Herramientas */}
+        <h4 className="mb-4">Herramientas</h4>
+        <div className="row justify-content-center mb-5">
+          <div className="col-4 col-md-2 skill-item">
+            <SiGit size={40} />
+            <p>Git</p>
+          </div>
+          <div className="col-4 col-md-2 skill-item">
+            <FaGithub size={40} />
             <p>GitHub</p>
           </div>
-
         </div>
+
+        {/* Formación y Otros */}
+        <h4 className="mb-4">Otros Conocimientos</h4>
+        <div className="row justify-content-center">
+          <div className="col-4 col-md-2 skill-item">
+            <FaUserGraduate size={40} />
+            <p>Técnico Informático</p>
+          </div>
+          <div className="col-4 col-md-2 skill-item">
+            <FaGlobeAmericas size={40} />
+            <p>Bilingüe Inglés</p>
+          </div>
+        </div>
+       </div>
       </div>
     </section>
   );

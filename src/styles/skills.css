@@ -1,0 +1,46 @@
+/* Estilos para la sección de Skills - estilo moderno, no barroco */
+
+#skills {
+    background-color: #f8f9fa;
+  }
+  
+  .skill-item {
+    margin-bottom: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .skill-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(50, 142, 110, 0.3);
+  }
+  
+  .skill-item p {
+    margin-top: 0.5rem;
+    font-weight: 500;
+    color: #328e6e;
+  }
+  
+  .skill-item svg {
+    color: #67ae6e;
+  }
+  
+  #skills h2 {
+    color: #328e6e;
+    font-weight: 700;
+  }
+  
+  #skills h4 {
+    color: #67ae6e;
+    font-weight: 600;
+    margin-top: 2rem;
+  }
+  
+  #skills h2 {
+    color: #328e6e;
+    font-weight: 700;
+    display: inline-block;
+    border-bottom: 3px solid #328e6e;
+    padding-bottom: 0.3rem;
+    margin-bottom: 2rem;
+  }
+  

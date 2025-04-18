@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
+import ImageModal from './ImageModal';
+
 
 const Projects = () => {
+  const [modalAbierto, setModalAbierto] = useState(false);
+
   return (
     <section id="projects" className="p-5 bg-verde-medio texto-oscuro">
       <div className="container">
@@ -12,7 +16,8 @@ const Projects = () => {
                 src="/ChinoPelado.png"
                 className="card-img-top img-fluid"
                 alt="Sistema El Chino Pelado"
-                style={{ height: '200px', objectFit: 'cover' }}
+               style={{ height: '200px', objectFit: 'cover', cursor: 'pointer' }}
+               onClick={() => setModalAbierto(true)}
               />
               <div className="card-body d-flex flex-column">
                 <h5 className="card-title">El Chino Pelado</h5>
@@ -33,6 +38,12 @@ const Projects = () => {
           </div>
         </div>
       </div>
+      <ImageModal
+       src="/ChinoPelado.png"
+        alt="Sistema El Chino Pelado"
+        isOpen={modalAbierto}
+        onClose={() => setModalAbierto(false)}
+      />
     </section>
   );
 };
