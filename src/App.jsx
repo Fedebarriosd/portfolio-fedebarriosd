@@ -12,7 +12,6 @@ import Projects from './components/Projects';
 import Skills from './components/Skills';
 import Contact from './components/Contact';
 import Gracias from './components/Gracias';
-import Progheads from './components/Progheads';
 import ProgheadsLanding from './components/ProgheadsLanding';
 
 
@@ -31,7 +30,6 @@ function App() {
             <About />
             <Projects />
             <Skills />
-            <Progheads />
             <Contact />
           </>
         } />
