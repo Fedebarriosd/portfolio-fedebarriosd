@@ -13,6 +13,8 @@ import Skills from './components/Skills';
 import Contact from './components/Contact';
 import Gracias from './components/Gracias';
 import Progheads from './components/Progheads';
+import ProgheadsLanding from './components/ProgheadsLanding';
+
 
 function App() {
   useEffect(() => {
@@ -34,6 +36,8 @@ function App() {
           </>
         } />
       <Route path="/gracias" element={<Gracias />} />
+      <Route path="/progheads" element={<ProgheadsLanding />} />
+
     </Routes>
   </BrowserRouter>
   );
