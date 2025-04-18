@@ -21,7 +21,7 @@ const ProgheadsLanding = () => {
           </a>
 
           <a
-            href="https://open.spotify.com/user/31jsybgwbjjso7p46apwyod2vy5m"
+            href="https://open.spotify.com/user/31f7zmmq4iior2j6e7jioawqeidq"
             className="text-light icon-hover"
             target="_blank"
             rel="noopener noreferrer"
