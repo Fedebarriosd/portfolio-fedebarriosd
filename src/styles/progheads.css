@@ -1,0 +1,51 @@
+/* Fondo y estilos generales */
+.progheads-bg {
+    background-color: #1b1f24;
+    font-family: 'Cormorant Garamond', serif;
+    background-image: url('https://www.transparenttextures.com/patterns/dark-denim.png');
+    background-repeat: repeat;
+  }
+  
+  .progheads-title {
+    font-weight: 700;
+    text-shadow: 2px 2px 5px #000000cc;
+    color: #f5f5dc;
+    letter-spacing: 2px;
+    border-bottom: 3px double #a084ca;
+    display: inline-block;
+    padding-bottom: 0.3em;
+  }
+  
+  .progheads-subtitle {
+    color: #d4c1ec;
+    font-style: italic;
+  }
+  
+  /* Secciones */
+  .progheads-section {
+    background-color: #2a2f38;
+    border-top: 1px solid #444;
+    border-bottom: 1px solid #444;
+    padding: 3rem 1rem;
+  }
+  
+  /* Íconos con efecto barroco */
+  .icon-hover {
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+  
+  .icon-hover:hover {
+    transform: scale(1.2) rotate(2deg);
+    color: #a084ca !important;
+  }
+  
+  /* Tipografía decorativa para títulos secundarios */
+  .progheads-section h2 {
+    font-weight: 700;
+    color: #f0e6ff;
+    text-shadow: 1px 1px 4px #000;
+    border-left: 5px solid #a084ca;
+    padding-left: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
