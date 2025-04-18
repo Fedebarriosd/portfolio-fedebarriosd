@@ -5,6 +5,7 @@
     background-repeat: repeat;
     font-family: 'Cormorant Garamond', serif;
     color: #f5f5dc;
+    position: relative;
   }
   
   /* Hero barroco */
@@ -70,6 +71,11 @@
     width: 110px;
     opacity: 0.6;
     z-index: 10;
+    transition: filter 0.3s ease;
+  }
+  
+  .corner:hover {
+    filter: drop-shadow(0 0 8px #d4af37);
   }
   
   .corner-top-left {
@@ -116,8 +122,24 @@
     100% { opacity: 0.6; transform: scale(-1, -1) scale(1); }
   }
   
-  .corner:hover {
-    filter: drop-shadow(0 0 8px #d4af37);
-    transition: filter 0.3s ease;
+  /* === Playlist Cards === */
+  .playlist-card {
+    background-color: #0e1a2b;
+    border: 2px solid #d4af37;
+    border-radius: 12px;
+    box-shadow: 0 0 20px #000000aa;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .playlist-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 30px #d4af37aa;
+  }
+  
+  .playlist-title {
+    font-weight: bold;
+    color: #f5f5dc;
+    font-size: 1.25rem;
+    text-shadow: 1px 1px 4px #000;
   }
   

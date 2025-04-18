@@ -1,6 +1,8 @@
 import React from 'react';
 import '../styles/progheads.css';
 import { FaInstagram, FaSpotify } from 'react-icons/fa';
+import PlaylistCards from './PlaylistCards';
+
 
 const ProgheadsLanding = () => {
   return (
@@ -45,14 +47,7 @@ const ProgheadsLanding = () => {
         </div>
       </section>
 
-      <section className="progheads-section py-5 bg-dark-subtle text-light">
-        <div className="container">
-          <h2 className="mb-4">🎧 Playlists destacadas</h2>
-          <p style={{ color: '#111c2d' }}>
-            Próximamente: links a playlists esenciales, gemas ocultas y recorridos temáticos por el universo del prog.
-        </p>
-        </div>
-      </section>
+      <PlaylistCards />
     </div>
   );
 };
