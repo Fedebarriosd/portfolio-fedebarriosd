@@ -1,10 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../styles/progheads.css';
 import { FaInstagram, FaSpotify } from 'react-icons/fa';
 import PlaylistCards from './PlaylistCards';
 
 
 const ProgheadsLanding = () => {
+  const [showHammill, setShowHammill] = useState(false);
+  const [isFadingOut, setIsFadingOut] = useState(false);
+  
+  const handleClick = () => {
+    if (showHammill) {
+      setIsFadingOut(true);
+      setTimeout(() => {
+        setShowHammill(false);
+        setIsFadingOut(false);
+      }, 500);
+    } else {
+      setShowHammill(true);
+    }
+  };
+  
+  
   return (
     <div className="progheads-bg text-light">
     <img src="/ornamento-esquina.png" className="corner corner-top-left" alt="decoración esquina" />
@@ -48,6 +64,28 @@ const ProgheadsLanding = () => {
       </section>
 
       <PlaylistCards />
+      <section className="footer-section text-center">
+        <p className="footer-credit text-center text-light small mt-4">
+          Un proyecto creado por Fede Barrios, bajo la sombra intensa de{' '}
+          <button className="hammill-button" onClick={handleClick}>
+            Peter Hammill
+          </button>
+        </p>
+
+        {showHammill && (
+          <img
+            src="/hammill.png"
+            alt="Peter Hammill"
+            className={`hammill-img mt-3 ${isFadingOut ? 'fadeOut' : 'fadeIn'}`}
+          />
+        )}
+
+        <img
+          src="/ornamento-footer.png"
+          alt="ornamento-footer"
+          className="footer-ornamento mt-2"
+        />
+      </section>
     </div>
   );
 };

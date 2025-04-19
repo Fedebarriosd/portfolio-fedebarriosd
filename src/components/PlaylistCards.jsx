@@ -14,7 +14,7 @@ const playlists = [
     title: 'Esenciales Prog Metal',
     cover: '/Esenciales-progmetal.png',
     url: 'https://open.spotify.com/playlist/4IVt1rwTIvJ63PHPD3Sm1q?si=a15d0ef1be29428b',
-    description: 'Lo más fino del metal progresivo: técnica brutal, riffs laberínticos y sensibilidad melódica.'
+    description: 'Como el metal normal, pero con más culpa, tiempos raros y menos fans.'
   },
   {
     id: 3,
@@ -28,7 +28,7 @@ const playlists = [
     title: 'Gemas Ocultas Prog Metal',
     cover: '/Joyas-progmetal.png',
     url: 'https://open.spotify.com/playlist/3PuQ0wXNOML7M7AFIaXu39?si=f42ef1ff9a8e44a2',
-    description: 'Metal progresivo subterráneo y experimental para almas que buscan complejidad sin concesiones.'
+    description: 'Solos interminables, growls existenciales y estructuras que desafían toda lógica... y popularidad.'
   }
 ];
 
