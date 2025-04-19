@@ -8,7 +8,7 @@ const MiniProgheads = () => {
         <p className="lead mb-4">
           Además de programar, también soy creador de <strong>Progheads_PY</strong>, un espacio dedicado al rock progresivo en todas sus formas. Si te interesa conocer la buena música, acá vas a encontrar desde lo esencial hasta las joyas ocultas del género.
         </p>
-        <a href="/progheads" className="btn btn-verde">
+        <a href="https://progheads.vercel.app" target='_blank' rel="noopener noreferrer" className="btn btn-verde">
           Explorar Progheads
         </a>
       </div>
