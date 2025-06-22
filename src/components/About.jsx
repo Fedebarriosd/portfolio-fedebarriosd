@@ -5,7 +5,11 @@ const About = () => {
     <section id="about" className="p-5 bg-crema texto-oscuro">
       <div className="container">
         <h2>Sobre mí</h2>
-        <p>Hola, soy Fede Barrios, estudiante de Ingeniería Informática. Me gusta programar y crear soluciones reales como el sistema de 'El Chino Pelado'.</p>
+        <p>
+          Hola, soy Fede Barrios, estudiante de Ingeniería Informática en la Universidad Americana de Asunción. 
+          Me apasiona la tecnología, desde el hardware hasta el software, y disfruto creando soluciones innovadoras.
+          Cuando no estoy estudiando , me gusta tocar la guitarra, escuchar música, leer libros o jugar videojuegos.
+        </p>
       </div>
     </section>
   );

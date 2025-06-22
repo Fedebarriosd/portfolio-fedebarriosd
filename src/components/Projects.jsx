@@ -8,7 +8,7 @@ const Projects = () => {
   return (
     <section id="projects" className="p-5 bg-verde-medio texto-oscuro">
       <div className="container">
-        <h2 className="mb-4">Proyectos</h2>
+        <h2 className="mb-4 texto-claro">Proyectos</h2>
         <div className="row g-4">
           <div className="col-md-6 col-lg-4" data-aos="fade-up">
             <div className="card h-100 shadow-sm">
@@ -22,11 +22,11 @@ const Projects = () => {
               <div className="card-body d-flex flex-column">
                 <h5 className="card-title">El Chino Pelado</h5>
                 <p className="card-text flex-grow-1">
-                  Sistema de gestión para una pizzería: manejo de pedidos, usuarios y stock. Desarrollado con interfaz de escritorio.
+                  Sistema de gestión para una pizzería: manejo de pedidos, usuarios y stock. Desarrollado con tecnologías modernas.
                 </p>
-                <p><strong>Tecnologías:</strong> C#, SQLite, Windows Forms</p>
+                <p><strong>Tecnologías:</strong> Node.js, React, Vite, Bootstrap, CSS</p>
                 <a
-                  href="https://github.com/Fedebarriosd/ChinoPelado"
+                  href="https://github.com/Fedebarriosd/chino-pelado-web"
                   className="btn btn-verde mt-auto"
                   target="_blank"
                   rel="noopener noreferrer"
