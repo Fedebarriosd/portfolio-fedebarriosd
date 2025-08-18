@@ -35,7 +35,7 @@ export default function Navbar() {
                     {/* Desktop CTA */}
                     <a
                         href="#contact"
-                        className="hidden sm:inline-flex items-center gap-2 rounded-xl px-4 py-2 bg-white/10 border border-white/20 hover:bg-white/15 transition"
+                        className="hidden sm:inline-flex btn-ghost"
                     >
                         <Mail size={18} /> Hablemos
                     </a>

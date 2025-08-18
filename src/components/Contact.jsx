@@ -23,8 +23,7 @@ export default function Contact() {
                 type="text"
                 name="name"
                 required
-                className="mt-1 w-full rounded-xl bg-white/10 border border-white/20 px-3 py-2
-                       focus:outline-none focus:ring-2 focus:ring-fuchsia-300/40"
+                className="mt-1 w-full rounded-xl bg-white/10 border border-white/20 px-3 py-2 ring-accent"
             />
           </label>
 
@@ -34,8 +33,7 @@ export default function Contact() {
                 type="email"
                 name="email"
                 required
-                className="mt-1 w-full rounded-xl bg-white/10 border border-white/20 px-3 py-2
-                       focus:outline-none focus:ring-2 focus:ring-fuchsia-300/40"
+                className="mt-1 w-full rounded-xl bg-white/10 border border-white/20 px-3 py-2 ring-accent"
             />
           </label>
 
@@ -45,15 +43,13 @@ export default function Contact() {
                 name="message"
                 rows={4}
                 required
-                className="mt-1 w-full rounded-xl bg-white/10 border border-white/20 px-3 py-2
-                       focus:outline-none focus:ring-2 focus:ring-fuchsia-300/40"
+                className="mt-1 w-full rounded-xl bg-white/10 border border-white/20 px-3 py-2 ring-accent"
             />
           </label>
 
           <button
               type="submit"
-              className="w-full inline-flex items-center justify-center rounded-xl px-4 py-2
-                     bg-indigo-600 hover:bg-indigo-700 text-white transition"
+              className="w-full btn-primary"
           >
             Enviar
           </button>

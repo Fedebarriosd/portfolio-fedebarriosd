@@ -30,7 +30,7 @@ export default function About() {
                         {['React', 'Vite', 'Tailwind', 'Bootstrap', 'Node.js', 'Git', 'Vercel'].map((t) => (
                             <li
                                 key={t}
-                                className="text-xs px-3 py-1.5 rounded-xl bg-white/10 border border-white/20"
+                                className="text-xs px-3 py-1.5 rounded-xl bg-violet-300/10 border border-violet-200/20"
                             >
                                 {t}
                             </li>

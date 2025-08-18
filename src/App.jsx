@@ -24,9 +24,9 @@ export default function App() {
     return (
         <div className="min-h-dvh text-white relative overflow-hidden">
             {/* Fondo degradado + blobs */}
-            <div className="absolute inset-0 -z-20 bg-gradient-to-br from-slate-900 via-indigo-900 to-fuchsia-900" />
-            <div className="pointer-events-none absolute -top-24 -left-16 h-80 w-80 rounded-full bg-fuchsia-500/30 blur-3xl animate-pulse" />
-            <div className="pointer-events-none absolute bottom-0 right-0 h-96 w-96 rounded-full bg-indigo-500/30 blur-3xl animate-pulse" />
+            <div className="absolute inset-0 -z-20 theme-bg" />
+            <div className="pointer-events-none absolute -top-24 -left-16 h-80 w-80 rounded-full blob-a blur-3xl animate-pulse" />
+            <div className="pointer-events-none absolute bottom-0 right-0 h-96 w-96 rounded-full blob-a blur-3xl animate-pulse" />
 
             {/* Navbar */}
             <Navbar />

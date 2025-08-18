@@ -9,10 +9,11 @@ export default function Hero() {
             <div className="pointer-events-none absolute -top-24 -right-16 h-56 w-56 rounded-full bg-fuchsia-500/20 blur-3xl" />
             <div className="pointer-events-none absolute -bottom-24 -left-16 h-56 w-56 rounded-full bg-indigo-500/20 blur-3xl" />
 
+
             <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight">
-        <span className="bg-gradient-to-r from-fuchsia-300 to-indigo-300 bg-clip-text text-transparent">
-          Federico Barrios
-        </span>
+                <span className="bg-gradient-to-r from-emerald-300 to-violet-300 bg-clip-text text-transparent">
+                    Federico Barrios
+                </span>
             </h1>
 
             <p className="mt-2 text-xs uppercase tracking-[0.25em] text-white/70">@fedebarriosd</p>
