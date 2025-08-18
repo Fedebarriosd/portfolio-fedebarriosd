@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 
-// Importá SOLO los componentes que realmente tengas creados
 import Navbar from './components/Navbar.jsx';
 import Hero from './components/Hero.jsx';
 import About from './components/About.jsx';
@@ -21,18 +20,61 @@ const Section = ({ id, className = '', children }) => (
 );
 
 export default function App() {
+    // Refs para los blobs y estado de hover
+    const blobA = useRef(null);
+    const blobB = useRef(null);
+    const [hovered, setHovered] = useState(false);
+
+    const handleMouseMove = (e) => {
+        const el = e.currentTarget;
+        const r = el.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5;  // -0.5 .. 0.5
+        const y = (e.clientY - r.top) / r.height - 0.5;
+
+        // amplitudes (ajustables)
+        const ax = x * 24, ay = y * 24;     // blob A
+        const bx = x * -36, by = y * -36;   // blob B (contramov)
+
+        const aExtra = hovered ? ' scale(1.1) rotate(6deg)' : '';
+        const bExtra = hovered ? ' scale(1.1) rotate(-6deg)' : '';
+
+        if (blobA.current) blobA.current.style.transform = `translate3d(${ax}px, ${ay}px, 0)${aExtra}`;
+        if (blobB.current) blobB.current.style.transform = `translate3d(${bx}px, ${by}px, 0)${bExtra}`;
+    };
+
+    const handleMouseLeave = () => {
+        setHovered(false);
+        if (blobA.current) blobA.current.style.transform = '';
+        if (blobB.current) blobB.current.style.transform = '';
+    };
+
     return (
-        <div className="min-h-dvh text-white relative overflow-hidden">
-            {/* Fondo degradado + blobs */}
+        <div
+            className="min-h-dvh text-white relative overflow-hidden"
+            onMouseMove={handleMouseMove}
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={handleMouseLeave}
+        >
+            {/* Fondo degradado */}
             <div className="absolute inset-0 -z-20 theme-bg" />
-            <div className="pointer-events-none absolute -top-24 -left-16 h-80 w-80 rounded-full blob-a blur-3xl animate-pulse" />
-            <div className="pointer-events-none absolute bottom-0 right-0 h-96 w-96 rounded-full blob-a blur-3xl animate-pulse" />
+
+            {/* Blobs (parallax + hover) */}
+            <div
+                ref={blobA}
+                className="absolute -top-24 -left-16 h-80 w-80 rounded-full blob blob-a float-slow"
+                aria-hidden="true"
+            />
+            <div
+                ref={blobB}
+                className="absolute bottom-0 right-0 h-96 w-96 rounded-full blob blob-b float-slow"
+                aria-hidden="true"
+            />
 
             {/* Navbar */}
             <Navbar />
 
             <main>
-                {/* Hero (envuelto en una card glass para que quede frosted) */}
+                {/* Hero */}
                 <Section id="home" className="pt-10 sm:pt-16 lg:pt-24">
                     <Hero />
                 </Section>
@@ -52,19 +94,19 @@ export default function App() {
                     <Skills />
                 </Section>
 
-                {/* Mini Progheads (si querés mostrar 2–3 posts o un widget) */}
+                {/* Mini Progheads */}
                 <Section id="progheads" className="mt-14 lg:mt-20">
                     <MiniProgheads />
                 </Section>
 
-                {/* Contacto (en card glass) */}
+                {/* Contacto */}
                 <Section id="contact" className="mt-14 lg:mt-20 mb-16 lg:mb-24">
                     <div className={`rounded-2xl p-6 ${glass}`}>
                         <Contact />
                     </div>
                 </Section>
 
-                {/* Gracias (si usás una sección de confirmación; si no, podés borrar) */}
+                {/* Gracias */}
                 <Section id="gracias" className="mt-10 mb-20">
                     <div className={`rounded-2xl p-6 ${glass}`}>
                         <Gracias />

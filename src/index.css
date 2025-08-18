@@ -1,18 +1,48 @@
+/* src/index.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Glass ya lo tenés, lo dejo igual */
+/* ===== Motion vars (para blobs con parallax) ===== */
+@property --tx     { syntax: '<length>'; inherits: false; initial-value: 0px; }
+@property --ty     { syntax: '<length>'; inherits: false; initial-value: 0px; }
+@property --scale  { syntax: '<number>'; inherits: false; initial-value: 1; }
+@property --rot    { syntax: '<angle>';  inherits: false; initial-value: 0deg; }
+@property --floatY { syntax: '<length>'; inherits: false; initial-value: 0px; }
+
+@keyframes floaty {
+  0%, 100% { --floatY: 0px; }
+  50%      { --floatY: -8px; }
+}
+
+/* ===== Utilidades del tema ===== */
 @layer utilities {
+  /* Glass */
   .glass { @apply bg-white/10 backdrop-blur-lg border border-white/20 shadow-xl; }
 
-  /* === Tema verde/azul/lila === */
+  /* Paleta verde/azul/lila */
   .theme-bg { @apply bg-gradient-to-br from-emerald-950 via-sky-950 to-violet-950; }
   .blob-a   { @apply bg-emerald-500/25; }
   .blob-b   { @apply bg-violet-500/25; }
 
-  /* Botones y foco unificados */
+  /* Blobs: usan variables para componer transform sin pisarse */
+  .blob {
+    pointer-events: none;
+    will-change: transform;
+    transform:
+            translate3d(var(--tx), calc(var(--ty) + var(--floatY)), 0)
+            scale(var(--scale))
+            rotate(var(--rot));
+    transition:
+            --tx 150ms ease, --ty 150ms ease,
+            --scale 200ms ease, --rot 200ms ease;
+    filter: blur(0); /* fuerza composición */
+  }
+
+  .float-slow { animation: floaty 12s ease-in-out infinite; }
+
+  /* Botones y foco */
   .btn-primary { @apply inline-flex items-center justify-center rounded-xl px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white transition; }
-  .btn-ghost  { @apply inline-flex items-center justify-center rounded-xl px-4 py-2 bg-white/10 border border-white/20 hover:bg-white/15 transition; }
+  .btn-ghost   { @apply inline-flex items-center justify-center rounded-xl px-4 py-2 bg-white/10 border border-white/20 hover:bg-white/15 transition; }
   .ring-accent { @apply focus:outline-none focus:ring-2 focus:ring-violet-300/40; }
 }
