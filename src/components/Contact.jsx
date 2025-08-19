@@ -14,7 +14,7 @@ export default function Contact() {
           <input
               type="hidden"
               name="_redirect"
-              value="https://portfolio-fedebarriosd.vercel.app/#gracias"
+              value={`${window.location.origin}/#gracias`}
           />
 
           <label className="text-sm block mb-3">
