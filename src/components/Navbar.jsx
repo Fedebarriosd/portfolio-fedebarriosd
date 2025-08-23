@@ -35,9 +35,9 @@ export default function Navbar() {
                     {/* Desktop CTA */}
                     <a
                         href="#contact"
-                        className="hidden sm:inline-flex btn-ghost"
+                        className="hidden sm:inline-flex btn-ghost gap-2"
                     >
-                        <Mail size={18} /> Hablemos
+                        <Mail size={22} />Hablemos
                     </a>
 
                     {/* Mobile toggle */}
