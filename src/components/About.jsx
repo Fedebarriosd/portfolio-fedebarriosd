@@ -2,19 +2,22 @@
 import React from 'react';
 import { ArrowRight, Mail } from 'lucide-react';
 import profilePic from '../assets/images/Hero.png';
+import { motion } from 'framer-motion';
+import { Reveal, HoverLift } from './Reveal.jsx';
 
 export default function About() {
     return (
-        <div className="glass rounded-2xl p-6 lg:p-8">
+        <Reveal className="glass rounded-2xl p-6 lg:p-8">
             <div className="grid gap-6 lg:grid-cols-[180px_1fr] items-center">
                 {/* Foto */}
-                <div className="justify-self-center lg:justify-self-start">
-                    <img
-                        src={profilePic}
-                        alt="Foto de Federico Barrios"
-                        className="h-40 w-40 rounded-full object-cover border border-white/20 shadow-xl"
-                    />
-                </div>
+                <HoverLift className="justify-self-center lg:justify-self-start">
+                  <motion.img
+                    whileHover={{ scale: 1.03, rotate: 1 }}
+                    transition={{ type: 'spring', stiffness: 250, damping: 18 }}
+                    src={profilePic} alt="Foto de Federico Barrios"
+                    className="h-40 w-40 rounded-full object-cover border border-white/20 shadow-xl"
+                  />
+                </HoverLift>
 
                 {/* Texto */}
                 <div>
@@ -56,6 +59,6 @@ export default function About() {
                     </div>
                 </div>
             </div>
-        </div>
+        </Reveal>
     );
 }

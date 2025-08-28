@@ -1,10 +1,14 @@
 import React from 'react';
 import { ArrowRight, Mail } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export default function Hero() {
     return (
-        <div className="relative overflow-hidden rounded-3xl p-8 lg:p-12
-                    bg-gradient-to-br from-white/10 to-white/0 border border-white/15">
+        <motion.div className="relative overflow-hidden rounded-3xl p-8 lg:p-12 bg-gradient-to-br from-white/10 to-white/0 border border-white/15"
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+        >
             {/* blobs sutiles */}
             <div className="pointer-events-none absolute -top-24 -right-16 h-56 w-56 rounded-full bg-fuchsia-500/20 blur-3xl" />
             <div className="pointer-events-none absolute -bottom-24 -left-16 h-56 w-56 rounded-full bg-indigo-500/20 blur-3xl" />
@@ -22,6 +26,6 @@ export default function Hero() {
                 Estudiante de Ingeniería Informática · Apasionado por la programación
             </p>
 
-        </div>
+        </motion.div>
     );
 }

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import ImageModal from './ImageModal';
+import { motion } from 'framer-motion';
+import { Reveal } from './Reveal';
 
 const items = [
   {
@@ -40,12 +42,18 @@ export default function Projects() {
   };
 
   return (
-      <div>
+      <Reveal>
         <h2 className="text-2xl sm:text-3xl font-bold mb-6">Proyectos</h2>
-
         <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
-          {items.map((p) => (
-              <div key={p.title} className="glass rounded-2xl p-6 flex flex-col">
+        {items.map((p, i) => (
+            <motion.div
+              key={p.title}
+              className="glass rounded-2xl p-6 flex flex-col"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.45, ease: 'easeOut', delay: i * 0.06 }}
+              viewport={{ once: true, amount: 0.15 }}
+            >
                 {/* Imagen clickable */}
                 <button
                     type="button"
@@ -79,7 +87,7 @@ export default function Projects() {
                 >
                   {p.cta}
                 </a>
-              </div>
+            </motion.div>
           ))}
         </div>
 
@@ -90,6 +98,6 @@ export default function Projects() {
             isOpen={isOpen}
             onClose={() => setIsOpen(false)}
         />
-      </div>
+      </Reveal>
   );
 }

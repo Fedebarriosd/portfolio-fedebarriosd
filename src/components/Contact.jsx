@@ -1,8 +1,9 @@
 import { Mail, Github, Linkedin, Instagram } from 'lucide-react';
+import { Reveal } from './Reveal';
 
 export default function Contact() {
   return (
-      <div>
+      <Reveal>
         <h2 className="text-2xl sm:text-3xl font-bold mb-4">Contacto</h2>
 
         {/* FORMULARIO */}
@@ -98,6 +99,6 @@ export default function Contact() {
             </a>
           </div>
         </div>
-      </div>
+      </Reveal>
   );
 }

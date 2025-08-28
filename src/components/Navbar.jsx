@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, Menu, X } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export default function Navbar() {
     const [open, setOpen] = useState(false);
@@ -33,12 +34,14 @@ export default function Navbar() {
                     </div>
 
                     {/* Desktop CTA */}
-                    <a
+                    <motion.a
                         href="#contact"
                         className="hidden sm:inline-flex btn-ghost gap-2"
+                        whileHover={{ scale: 1.03 }}
+                        transition={{ type: 'spring', stiffness: 280, damping: 18 }}
                     >
                         <Mail size={22} />Hablemos
-                    </a>
+                    </motion.a>
 
                     {/* Mobile toggle */}
                     <button

@@ -19,6 +19,7 @@ import { FaGithub, FaUserGraduate } from 'react-icons/fa';
 import { TbBrandCSharp } from "react-icons/tb";
 import { PiFlowArrowBold } from 'react-icons/pi'; // PseInt
 import ReactCountryFlag from 'react-country-flag';
+import { Reveal, HoverLift } from './Reveal';
 
 /** Tarjeta de skill (con fallback si el icono no existe) */
 function SkillItem({ Icon, label, imgSrc, Custom }) {
@@ -32,7 +33,7 @@ function SkillItem({ Icon, label, imgSrc, Custom }) {
     }
 
     return (
-        <div className="w-44 sm:w-48 text-center flex flex-col items-center gap-2
+        <HoverLift className="w-44 sm:w-48 text-center flex flex-col items-center gap-2
                     rounded-xl px-3 py-4 bg-white/10 border border-white/20
                     hover:bg-white/15 transition">
             {isValidIcon ? (
@@ -48,7 +49,7 @@ function SkillItem({ Icon, label, imgSrc, Custom }) {
                 </div>
             )}
             <p className="text-sm text-white/90">{label}</p>
-        </div>
+        </HoverLift>
     );
 }
 
@@ -98,7 +99,7 @@ export default function Skills() {
     ];
 
     return (
-        <div className="glass rounded-2xl p-6 lg:p-8">
+        <Reveal className="glass rounded-2xl p-6 lg:p-8">
             <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center">Habilidades Técnicas</h2>
 
             <h3 className="text-lg font-semibold mb-3 text-center">Lenguajes de Programación</h3>
@@ -125,6 +126,6 @@ export default function Skills() {
             <div className="flex flex-wrap justify-center gap-4">
                 {otros.map((it) => <SkillItem key={it.label} {...it} />)}
             </div>
-        </div>
+        </Reveal>
     );
 }
