@@ -3,7 +3,7 @@
     // --------------- opciones ---------------
     const SIZE = 64;          // tamaño del canvas que generamos
     const FPS = 20;           // frames por segundo
-    const REV_PER_SEC = 0.2;  // vueltas por segundo (0.8 = 48 rpm)
+    const REV_PER_SEC = 0.05;  // vueltas por segundo (0.8 = 48 rpm)
     // ----------------------------------------
 
     const prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
