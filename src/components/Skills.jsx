@@ -11,9 +11,10 @@ import {
     SiGit,
     SiReact,
     SiVite,
-    SiNodedotjs,     // ✅ este nombre es correcto (no SiNodeDotJs)
+    SiNodedotjs,
     SiBootstrap,
-    SiReactrouter,   // ✅ React Router
+    SiReactrouter,
+    SiTailwindcss,  
 } from 'react-icons/si';
 import { FaGithub, FaUserGraduate } from 'react-icons/fa';
 import { TbBrandCSharp } from "react-icons/tb";
@@ -71,6 +72,7 @@ export default function Skills() {
         { Icon: SiNodedotjs, label: 'Node.js' },
         { Icon: SiBootstrap, label: 'Bootstrap' },
         { Icon: SiReactrouter, label: 'React Router' },
+        { Icon: SiTailwindcss, label: 'Tailwind CSS' },
     ];
 
     const bases = [

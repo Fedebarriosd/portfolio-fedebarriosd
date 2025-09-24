@@ -28,6 +28,14 @@ const items = [
     cta: 'Ver en GitHub',
     tech: 'React, Vite, Tailwind',
   },
+  {
+    title: 'Teresa Galeano - Psicóloga',
+    desc: 'Página web de la psicóloga Teresa Galeano.',
+    img: '/Teresa-logo.svg',
+    href: 'https://paginaweb-topaz-sigma.vercel.app/',
+    cta: 'Ver sitio web',
+    tech: 'React, Vite, Bootstrap',
+  },
 ];
 
 export default function Projects() {
@@ -44,11 +52,11 @@ export default function Projects() {
   return (
       <Reveal>
         <h2 className="text-2xl sm:text-3xl font-bold mb-6">Proyectos</h2>
-        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+        <div className="flex flex-wrap justify-center gap-6">
         {items.map((p, i) => (
             <motion.div
               key={p.title}
-              className="glass rounded-2xl p-6 flex flex-col"
+              className="glass rounded-2xl p-6 flex flex-col w-full sm:w-[24rem]"
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45, ease: 'easeOut', delay: i * 0.06 }}
