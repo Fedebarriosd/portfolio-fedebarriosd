@@ -36,6 +36,14 @@ const items = [
     cta: 'Ver sitio web',
     tech: 'React, Vite, Bootstrap',
   },
+  {
+    title: 'Ajedrez en C',
+    desc: 'Juego de ajedrez programado en C usando la librería raylib.',
+    img: '/Chess.png',
+    href: 'https://github.com/Fedebarriosd/chess-c',
+    cta: 'Descargar desde GitHub',
+    tech: 'C, raylib',
+  },
 ];
 
 export default function Projects() {
