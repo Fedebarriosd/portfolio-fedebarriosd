@@ -32,7 +32,7 @@ const items = [
     title: 'Teresa Galeano - Psicóloga',
     desc: 'Página web de la psicóloga Teresa Galeano.',
     img: '/Teresa-logo.svg',
-    href: 'https://paginaweb-topaz-sigma.vercel.app/',
+    href: 'https://teresagaleano.net/',
     cta: 'Ver sitio web',
     tech: 'React, Vite, Bootstrap',
   },
