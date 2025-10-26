@@ -5,14 +5,6 @@ import { Reveal } from './Reveal';
 
 const items = [
   {
-    title: 'El Chino Pelado',
-    desc: 'Sistema de gestión para una pizzería: pedidos, usuarios y stock.',
-    img: '/ChinoPelado.png',            // poné la imagen en /public
-    href: 'https://github.com/Fedebarriosd/chino-pelado-web',
-    cta: 'Ver en GitHub',
-    tech: 'Node.js, React, Vite, Bootstrap',
-  },
-  {
     title: 'Progheads_PY',
     desc: 'Página de rock progresivo con posts, reviews y noticias.',
     img: '/Progheads.png',
@@ -43,6 +35,22 @@ const items = [
     href: 'https://github.com/Fedebarriosd/chess-c',
     cta: 'Descargar desde GitHub',
     tech: 'C, raylib',
+  },
+  {
+    title: 'Herramientas para Autómatas',
+    desc: 'Conjunto de herramientas para trabajar con autómatas finitos deterministas y no deterministas.',
+    img: '/Automatas.jpg',
+    href: 'https://github.com/Fedebarriosd/herramientas-automatas',
+    cta: 'Descargar desde GitHub',
+    tech: 'C, Graphviz',
+  },
+  {
+    title: 'El Chino Pelado',
+    desc: 'Sistema de gestión para una pizzería: pedidos, usuarios y stock.',
+    img: '/ChinoPelado.png',            // poné la imagen en /public
+    href: 'https://github.com/Fedebarriosd/chino-pelado-web',
+    cta: 'Ver en GitHub',
+    tech: 'Node.js, React, Vite, Bootstrap',
   },
 ];
 
