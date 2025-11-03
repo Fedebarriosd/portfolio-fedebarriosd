@@ -40,7 +40,7 @@ const items = [
     title: 'Herramientas para Autómatas',
     desc: 'Conjunto de herramientas para trabajar con autómatas finitos deterministas y no deterministas.',
     img: '/Automatas.jpg',
-    href: 'https://github.com/Fedebarriosd/herramientas-automatas',
+    href: 'https://github.com/Fedebarriosd/herramientas-para-automatas',
     cta: 'Descargar desde GitHub',
     tech: 'C, Graphviz',
   },
