@@ -34,7 +34,7 @@ const items = [
     img: '/Chess.png',
     href: 'https://github.com/Fedebarriosd/chess-c',
     cta: 'Descargar desde GitHub',
-    tech: 'C, raylib',
+    tech: 'C, Raylib, Cmake',
   },
   {
     title: 'Herramientas para Autómatas',
