@@ -8,6 +8,8 @@ import Skills from './components/Skills.jsx';
 import MiniProgheads from './components/MiniProgheads.jsx';
 import Contact from './components/Contact.jsx';
 import Gracias from './components/Gracias.jsx';
+import TopProgress from './components/TopProgress.jsx';
+import Cursor from './components/Cursor.jsx';
 
 const glass = 'glass';
 
@@ -58,7 +60,9 @@ export default function App() {
             <div ref={blobA} className="absolute -top-24 -left-16 h-80 w-80 rounded-full blob blob-a float-slow" />
             <div ref={blobB} className="absolute bottom-0 right-0 h-96 w-96 rounded-full blob blob-b float-slow" />
 
+            <TopProgress />
             <Navbar />
+            <Cursor />
 
             <main>
                 <Section id="home" className="pt-10 sm:pt-16 lg:pt-24"><Hero /></Section>

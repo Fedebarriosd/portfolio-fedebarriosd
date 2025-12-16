@@ -4,6 +4,7 @@ import { ArrowRight, Mail } from 'lucide-react';
 import profilePic from '../assets/images/Hero.png';
 import { motion } from 'framer-motion';
 import { Reveal, HoverLift } from './Reveal.jsx';
+import MagneticButton from './MagneticButton.jsx';
 
 export default function About() {
     return (
@@ -41,21 +42,21 @@ export default function About() {
                     </ul>
 
                     {/* CTAs */}
-                    <div className="mt-6 flex flex-col sm:flex-row gap-3">
-                        <a
-                            href="#projects"
+                    <div className="mt-6 flex flex-col sm:flex-row gap-3 sm:gap-6 md:gap-8">
+                        <MagneticButton
+                            onClick={() => location.href = '#projects'}
                             className="inline-flex items-center justify-center rounded-xl px-4 py-2
                          bg-indigo-600 hover:bg-indigo-700 text-white transition"
                         >
                             Ver proyectos <ArrowRight size={18} className="ml-2" />
-                        </a>
-                        <a
-                            href="#contact"
+                        </MagneticButton>
+                        <MagneticButton
+                            onClick={() => location.href = '#contact'}
                             className="inline-flex items-center justify-center rounded-xl px-4 py-2
                          bg-white/10 border border-white/20 hover:bg-white/15 transition"
                         >
-                            <Mail size={18} className="mr-2" /> Contacto
-                        </a>
+                            <Mail size={18} className="mr-2" /> Hablemos
+                        </MagneticButton>
                     </div>
                 </div>
             </div>
