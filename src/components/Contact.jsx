@@ -1,4 +1,4 @@
-import { Mail, Github, Linkedin, Instagram } from 'lucide-react';
+import { Mail, Github, Linkedin, Instagram, MessageCircle } from 'lucide-react';
 import { Reveal } from './Reveal';
 
 export default function Contact() {
@@ -66,6 +66,16 @@ export default function Contact() {
                 aria-label="Email"
             >
               <Mail size={24} />
+            </a>
+
+            <a
+              href="https://wa.me/595981598367?text=Hola%20Fede%2C%20vi%20tu%20portfolio%20y%20quiero%20contactarte"
+              target="_blank"
+              rel="noreferrer"
+              className="p-2 rounded-lg bg-accent/20 border border-accent/30 hover:bg-accent/30 transition"
+              aria-label="WhatsApp"
+            >
+              <MessageCircle size={24} />
             </a>
 
             <a
