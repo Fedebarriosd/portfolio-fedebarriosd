@@ -1,97 +1,174 @@
 // src/utils/rotateFavicon.js
 (() => {
-  const SIZE = 64;           // canvas
-  const FPS = 20;
-  const REV_PER_SEC = 0.08;  // velocidad
-  const prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const SIZE = 32;          // 16 o 32 para tabs; 32 suele verse mejor
+  const FPS = 12;           // no hace falta más (menos glitch / menos CPU)
+  const REV_PER_SEC = 0.08; // vueltas por segundo
+  const PAD = 2;            // padding interno
 
-  // Usa nuestro <link> si existe, si no crea uno
-  const link =
+  const prefersReduce =
+    window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches;
+
+  // Si el usuario pidió reducir movimiento, no animar
+  if (prefersReduce) return;
+
+  // Buscar o crear <link rel="icon">
+  let link =
     document.getElementById('app-favicon') ||
-    document.querySelector("link[rel~='icon']") ||
-    (() => { const l = document.createElement('link'); l.id = 'app-favicon'; l.rel = 'icon'; document.head.appendChild(l); return l; })();
+    document.querySelector("link[rel~='icon']");
 
-  // Candidatos de icono (actual, svg, ico)
+  if (!link) {
+    link = document.createElement('link');
+    link.id = 'app-favicon';
+    link.rel = 'icon';
+    document.head.appendChild(link);
+  } else if (!link.id) {
+    link.id = 'app-favicon';
+  }
+
+  // Favicons candidatos (priorizar PNG)
   const candidates = [
+    '/favicon.png',
     link.getAttribute('href'),
-    '/favicon.svg',
     '/favicon.ico',
+    '/favicon.svg',
   ].filter(Boolean);
 
-  // Si el usuario pidió reducir movimiento, dejá el favicon estático
-  if (prefersReduce) { link.href = candidates[0]; return; }
-
-  // Carga con fallback
+  // Cargar imagen con fallback
   function loadIcon(urls, onDone) {
-    if (!urls.length) return onDone(null);
+    if (!urls.length) return onDone(null, null);
     const src = urls[0];
     const img = new Image();
     img.crossOrigin = 'anonymous'; // mismo origen ok
-    img.onload = () => onDone(img);
+    img.onload = () => onDone(img, src);
     img.onerror = () => loadIcon(urls.slice(1), onDone);
     img.src = src;
   }
 
-  loadIcon(candidates, (img) => {
+  // Manejo de Blob URL para favicon
+  let lastObjectUrl = null;
+  function applyFaviconBlob(blob) {
+    // Revocar el anterior (para no filtrar memoria)
+    if (lastObjectUrl) URL.revokeObjectURL(lastObjectUrl);
+    lastObjectUrl = URL.createObjectURL(blob);
+
+    // Importante: setear type/sizes para que el browser lo interprete bien
+    link.type = 'image/png';
+    link.sizes = `${SIZE}x${SIZE}`;
+    link.href = lastObjectUrl;
+  }
+
+  loadIcon(candidates, (img, usedSrc) => {
     if (!img) {
       console.warn('rotateFavicon: no pude cargar ningún favicon.');
       return;
     }
 
-    const dpr = Math.min(2, window.devicePixelRatio || 1);
-    const canvas = document.createElement('canvas');
-    canvas.width = SIZE * dpr;
-    canvas.height = SIZE * dpr;
-    const ctx = canvas.getContext('2d');
-    ctx.scale(dpr, dpr);
+    // Dimensiones seguras
+    const iw = img.naturalWidth || img.width || SIZE;
+    const ih = img.naturalHeight || img.height || SIZE;
 
-    function draw(tMs) {
-      const angle = (tMs / 1000) * (2 * Math.PI) * REV_PER_SEC;
+    // Canvas offscreen
+    const canvas = document.createElement('canvas');
+    canvas.width = SIZE;
+    canvas.height = SIZE;
+
+    const ctx = canvas.getContext('2d', { alpha: true });
+    if (!ctx) return;
+
+    ctx.imageSmoothingEnabled = true;
+
+    // Evitar carreras async de toBlob
+    let pendingBlob = false;
+    let frameId = 0;
+    let lastApplied = 0;
+
+    // Loop
+    let running = false;
+    let lastFrameTime = 0;
+
+    function drawAndQueue(nowMs) {
+      const id = ++frameId;
+      const angle = (nowMs / 1000) * (2 * Math.PI) * REV_PER_SEC;
+
       ctx.clearRect(0, 0, SIZE, SIZE);
+
       ctx.save();
       ctx.translate(SIZE / 2, SIZE / 2);
       ctx.rotate(angle);
 
-      const PAD = 2;
       const s = Math.min(
-        (SIZE - PAD * 2) / img.width,
-        (SIZE - PAD * 2) / img.height
+        (SIZE - PAD * 2) / iw,
+        (SIZE - PAD * 2) / ih
       );
 
       ctx.drawImage(
         img,
-        -(img.width * s) / 2,
-        -(img.height * s) / 2,
-        img.width * s,
-        img.height * s
+        -(iw * s) / 2,
+        -(ih * s) / 2,
+        iw * s,
+        ih * s
       );
+
       ctx.restore();
 
-      try {
-        link.href = canvas.toDataURL('image/png');
-      } catch (e) {
-        console.warn('rotateFavicon: canvas tainted, dejo estático.', e);
-        link.href = candidates[0];
-        stop();
-      }
+      // Solo 1 toBlob en vuelo
+      if (pendingBlob) return;
+      pendingBlob = true;
+
+      canvas.toBlob(
+        (blob) => {
+          pendingBlob = false;
+          if (!blob) return;
+
+          // Descartar callbacks viejos si el browser reordenó
+          if (id < lastApplied) return;
+          lastApplied = id;
+
+          applyFaviconBlob(blob);
+        },
+        'image/png',
+        0.92
+      );
     }
 
-    let timer = null, t0 = 0;
-    function start() {
-      if (timer) return;
-      t0 = performance.now();
-      draw(0);
-      timer = setInterval(() => draw(performance.now() - t0), 1000 / FPS);
+    function loop(now) {
+      if (!running) return;
+
+      const interval = 1000 / FPS;
+      if (now - lastFrameTime >= interval) {
+        lastFrameTime = now;
+        drawAndQueue(now);
+      }
+      requestAnimationFrame(loop);
     }
-    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+
+    function start() {
+      if (running) return;
+      running = true;
+      lastFrameTime = 0;
+      requestAnimationFrame(loop);
+    }
+
+    function stop() {
+      running = false;
+
+      // Volver al favicon estático (y limpiar blob URL)
+      if (usedSrc) link.href = usedSrc;
+
+      if (lastObjectUrl) {
+        URL.revokeObjectURL(lastObjectUrl);
+        lastObjectUrl = null;
+      }
+      pendingBlob = false;
+    }
 
     // Pausar cuando la pestaña no está visible
     document.addEventListener('visibilitychange', () => {
-      if (document.hidden) { stop(); link.href = candidates[0]; }
-      else { start(); }
+      if (document.hidden) stop();
+      else start();
     });
 
-    // iniciar
+    // Iniciar si está visible
     if (document.visibilityState !== 'hidden') start();
   });
 })();
