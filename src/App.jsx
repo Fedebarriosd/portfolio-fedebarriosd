@@ -11,6 +11,8 @@ import Gracias from './components/Gracias.jsx';
 import TopProgress from './components/TopProgress.jsx';
 import Cursor from './components/Cursor.jsx';
 
+console.log("Hello world");
+
 const glass = 'glass';
 
 const Section = ({ id, className = '', children }) => (

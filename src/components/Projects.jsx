@@ -52,6 +52,22 @@ const items = [
     cta: 'Ver en GitHub',
     tech: 'Node.js, React, Vite, Bootstrap',
   },
+  {
+    title: 'QR Generator',
+    desc: 'Generador de códigos QR offline que funciona directo desde el navegador. Soporta URLs, texto, contactos (vCard) y links de WhatsApp.',
+    img: '/QR.webp',
+    href: 'https://github.com/Fedebarriosd/qr-generator',
+    cta: 'Ver en GitHub',
+    tech: 'HTML, JavaScript, QRious',
+  },
+  {
+    title: 'face',
+    desc: 'Utilidades Bash para la terminal: copia emoticones ASCII al portapapeles y gestiona el clipboard en Wayland, X11 y macOS.',
+    img: '/Face.webp',
+    href: 'https://github.com/Fedebarriosd/face',
+    cta: 'Ver en GitHub',
+    tech: 'Bash',
+  },
 ];
 
 export default function Projects() {
