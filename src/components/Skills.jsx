@@ -4,7 +4,7 @@ import {
   SiCplusplus,
   SiJavascript,
   SiHtml5,
-  SiCss3,
+  SiCss,
   SiPostgresql,
   SiSqlite,
   SiGit,
@@ -21,17 +21,14 @@ import {
 } from 'react-icons/si';
 import { FaGithub, FaUserGraduate } from 'react-icons/fa';
 import { TbBrandCSharp } from 'react-icons/tb';
-import { PiFlowArrowBold } from 'react-icons/pi'; // PseInt
+import { PiFlowArrowBold } from 'react-icons/pi';
 import ReactCountryFlag from 'react-country-flag';
 import { Reveal, HoverLift } from './Reveal';
 
-/** Tarjeta de skill (con fallback si el icono no existe) */
 function SkillItem({ Icon, label, imgSrc, Custom }) {
   const isValidIcon = typeof Icon === 'function';
 
   if (Icon && !isValidIcon) {
-    // Aviso útil en dev si algún import está mal escrito (no afecta producción)
-    // eslint-disable-next-line no-console
     console.warn(`Icono inválido para "${label}". ¿Está bien el import?`);
   }
 
@@ -62,7 +59,7 @@ export default function Skills() {
   const lenguajes = [
     { Icon: SiJavascript, label: 'JavaScript' },
     { Icon: SiHtml5, label: 'HTML' },
-    { Icon: SiCss3, label: 'CSS' },
+    { Icon: SiCss, label: 'CSS' },
     { Icon: SiC, label: 'C' },
     { Icon: SiCplusplus, label: 'C++' },
     { Icon: TbBrandCSharp, label: 'C#' },
