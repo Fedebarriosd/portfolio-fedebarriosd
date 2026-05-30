@@ -16,8 +16,8 @@ const items = [
     title: 'Portfolio Personal',
     desc: 'Mi portfolio con proyectos, habilidades y contacto.',
     img: '/PFP.png',
-    href: 'https://github.com/Fedebarriosd/portfolio-fedebarriosd',
-    cta: 'Ver en GitHub',
+    href: 'https://www.fedebarrios.com/',
+    cta: 'Ya estás aquí!',
     tech: 'React, Vite, Tailwind',
   },
   {
@@ -47,7 +47,7 @@ const items = [
   {
     title: 'El Chino Pelado',
     desc: 'Sistema de gestión para una pizzería: pedidos, usuarios y stock.',
-    img: '/ChinoPelado.png',            // poné la imagen en /public
+    img: '/ChinoPelado.png',
     href: 'https://github.com/Fedebarriosd/chino-pelado-web',
     cta: 'Ver en GitHub',
     tech: 'Node.js, React, Vite, Bootstrap',
