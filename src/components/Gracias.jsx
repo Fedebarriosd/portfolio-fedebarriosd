@@ -1,21 +1,32 @@
-// src/components/Gracias.jsx
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { Home } from 'lucide-react';
+import { motion } from 'framer-motion';
+import Cursor from './Cursor.jsx';
 
 export default function Gracias() {
     return (
-        <div className="text-center py-16">
-            <h2 className="text-3xl font-bold">¡Gracias por tu mensaje!</h2>
-            <p className="mt-3 text-white/80">
-                Te responderé lo antes posible. Mientras tanto, ¡seguí explorando mi portfolio!
-            </p>
-
-            <a
-                href="/#home"
-                className="mt-6 inline-flex items-center justify-center rounded-xl px-4 py-2
-                   bg-indigo-600 hover:bg-indigo-700 text-white transition"
+        <div className="min-h-dvh bg-stone-50 text-zinc-900 flex items-center justify-center px-4">
+            <Cursor />
+            <motion.div
+                className="text-center max-w-md"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, ease: 'easeOut' }}
             >
-                Volver al inicio
-            </a>
+                <p className="text-xs font-bold uppercase tracking-[0.3em] text-orange-500 mb-4">
+                    Mensaje enviado
+                </p>
+                <h1 className="text-4xl sm:text-5xl font-black tracking-tight">
+                    ¡Gracias!
+                </h1>
+                <p className="mt-4 text-lg text-zinc-500 leading-relaxed">
+                    Recibí tu mensaje y te respondo lo antes posible.
+                </p>
+                <Link to="/" className="mt-8 btn-primary gap-2 inline-flex">
+                    <Home size={17} /> Volver al inicio
+                </Link>
+            </motion.div>
         </div>
     );
 }

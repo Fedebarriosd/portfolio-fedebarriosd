@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { NavLink, Link } from 'react-router-dom';
 import { Mail, Menu, X } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -6,80 +7,93 @@ export default function Navbar() {
     const [open, setOpen] = useState(false);
 
     const navItems = [
-        { href: '#about', label: 'Sobre mí' },
-        { href: '#projects', label: 'Proyectos' },
-        { href: '#skills', label: 'Skills' },
-        { href: '#progheads', label: 'Progheads_PY' },
-        { href: '#contact', label: 'Contacto' },
+        { to: '/about', label: 'Sobre mí' },
+        { to: '/projects', label: 'Proyectos' },
+        { to: '/contact', label: 'Contacto' },
     ];
+
+    const desktopLinkClass = ({ isActive }) =>
+        `text-sm font-medium transition-colors pb-0.5 ${
+            isActive
+                ? 'text-zinc-900 border-b-2 border-orange-500'
+                : 'text-zinc-500 hover:text-zinc-900'
+        }`;
 
     const closeMenu = () => setOpen(false);
 
     return (
-        <header className="sticky top-0 z-50 mx-4 my-4">
-            <nav className="glass rounded-2xl" aria-label="Main">
-                <div className="container mx-auto flex items-center justify-between px-4 py-3">
-                    {/* Brand */}
-                    <a href="#home" className="font-semibold tracking-wide">
-                        Federico Barrios
-                    </a>
+        <header className="sticky top-0 z-50 bg-stone-50/95 backdrop-blur-sm border-b border-stone-200">
+            <div className="container mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 py-4">
+                {/* Brand */}
+                <Link
+                    to="/"
+                    className="font-bold tracking-tight text-zinc-900 hover:text-orange-500 transition-colors"
+                >
+                    Federico Barrios
+                </Link>
 
-                    {/* Desktop nav */}
-                    <div className="hidden sm:flex items-center gap-6 text-sm">
-                        {navItems.slice(0, 4).map((item) => (
-                            <a key={item.href} href={item.href} className="hover:opacity-90">
-                                {item.label}
-                            </a>
-                        ))}
-                    </div>
+                {/* Desktop nav */}
+                <nav className="hidden sm:flex items-center gap-8" aria-label="Main">
+                    {navItems.map((item) => (
+                        <NavLink key={item.to} to={item.to} className={desktopLinkClass}>
+                            {item.label}
+                        </NavLink>
+                    ))}
+                </nav>
 
-                    {/* Desktop CTA */}
-                    <motion.a
-                        href="#contact"
-                        className="hidden sm:inline-flex btn-ghost gap-2"
-                        whileHover={{ scale: 1.03 }}
-                        transition={{ type: 'spring', stiffness: 280, damping: 18 }}
-                    >
-                        <Mail size={22} />Hablemos
-                    </motion.a>
+                {/* Desktop CTA */}
+                <motion.div
+                    whileHover={{ scale: 1.03 }}
+                    transition={{ type: 'spring', stiffness: 280, damping: 18 }}
+                    className="hidden sm:block"
+                >
+                    <Link to="/contact" className="btn-primary gap-2 !py-2 !px-4 text-sm">
+                        <Mail size={15} /> Hablemos
+                    </Link>
+                </motion.div>
 
-                    {/* Mobile toggle */}
-                    <button
-                        type="button"
-                        className="sm:hidden inline-flex items-center justify-center rounded-xl p-2 bg-white/10 border border-white/20 hover:bg-white/15 transition"
-                        aria-label="Abrir menú"
-                        aria-expanded={open}
-                        onClick={() => setOpen((v) => !v)}
-                    >
-                        {open ? <X size={20} /> : <Menu size={20} />}
-                    </button>
-                </div>
+                {/* Mobile toggle */}
+                <button
+                    type="button"
+                    className="sm:hidden p-2 rounded-xl border border-stone-200 hover:bg-stone-100 transition-colors"
+                    aria-label="Abrir menú"
+                    aria-expanded={open}
+                    onClick={() => setOpen((v) => !v)}
+                >
+                    {open ? <X size={20} /> : <Menu size={20} />}
+                </button>
+            </div>
 
-                {/* Mobile panel */}
-                {open && (
-                    <div className="sm:hidden border-t border-white/15 px-4 pb-4">
-                        <div className="pt-3 flex flex-col gap-2">
-                            {navItems.map((item) => (
-                                <a
-                                    key={item.href}
-                                    href={item.href}
-                                    onClick={closeMenu}
-                                    className="rounded-lg px-3 py-2 hover:bg-white/10"
-                                >
-                                    {item.label}
-                                </a>
-                            ))}
-                            <a
-                                href="#contact"
+            {/* Mobile panel */}
+            {open && (
+                <div className="sm:hidden border-t border-stone-200 px-4 pb-4 bg-stone-50">
+                    <div className="pt-3 flex flex-col gap-1">
+                        {navItems.map((item) => (
+                            <NavLink
+                                key={item.to}
+                                to={item.to}
                                 onClick={closeMenu}
-                                className="mt-1 inline-flex items-center gap-2 rounded-lg px-3 py-2 bg-white/10 border border-white/20 hover:bg-white/15"
+                                className={({ isActive }) =>
+                                    `rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${
+                                        isActive
+                                            ? 'bg-orange-50 text-orange-600'
+                                            : 'text-zinc-600 hover:bg-stone-100'
+                                    }`
+                                }
                             >
-                                <Mail size={18} /> Hablemos
-                            </a>
-                        </div>
+                                {item.label}
+                            </NavLink>
+                        ))}
+                        <Link
+                            to="/contact"
+                            onClick={closeMenu}
+                            className="mt-2 btn-primary gap-2 text-sm justify-center"
+                        >
+                            <Mail size={15} /> Hablemos
+                        </Link>
                     </div>
-                )}
-            </nav>
+                </div>
+            )}
         </header>
     );
 }
