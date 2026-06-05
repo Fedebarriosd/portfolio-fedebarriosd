@@ -38,7 +38,7 @@ export default function About() {
                         />
 
                         <h2 className="mt-5 font-bold text-xl text-zinc-900">Federico Barrios</h2>
-                        <p className="text-zinc-500 text-sm mt-1">Ing. Informática · UAA</p>
+                        <p className="text-zinc-500 text-sm mt-1">Ing. Informática · UA</p>
                         <p className="text-zinc-400 text-xs mt-0.5">@fedebarriosd</p>
 
                         {/* Social icons */}
