@@ -19,7 +19,7 @@ const socials = [
     label: 'GitHub',
   },
   {
-    href: 'https://www.linkedin.com/in/federico-barrios-b29620321',
+    href: 'https://www.linkedin.com/in/federico-barrios-3ab481416',
     Icon: Linkedin,
     label: 'LinkedIn',
   },
@@ -44,20 +44,20 @@ export default function Contact() {
       <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
         {/* Left: info */}
         <Reveal delay={0.05}>
-          <p className="text-lg text-zinc-500 leading-relaxed max-w-md">
+          <p className="text-lg text-zinc-500 dark:text-zinc-400 leading-relaxed max-w-md">
             Si tenés un proyecto en mente, una propuesta laboral o simplemente querés saludar, escribime.
             Respondo rápido.
           </p>
 
           <a
             href="mailto:fedebarriosd@proton.me"
-            className="mt-8 block text-xl font-bold text-zinc-900 hover:text-orange-500 transition-colors break-all"
+            className="mt-8 block text-xl font-bold text-zinc-900 dark:text-stone-50 hover:text-orange-500 dark:hover:text-orange-400 transition-colors break-all"
           >
             fedebarriosd@proton.me
           </a>
 
           <div className="mt-8">
-            <p className="text-sm font-semibold text-zinc-400 uppercase tracking-widest mb-4">
+            <p className="text-sm font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest mb-4">
               También en
             </p>
             <div className="flex gap-3">
@@ -68,7 +68,7 @@ export default function Contact() {
                   target={href.startsWith('mailto') ? undefined : '_blank'}
                   rel="noreferrer"
                   aria-label={label}
-                  className="p-2.5 rounded-xl border border-stone-200 text-zinc-500
+                  className="p-2.5 rounded-xl border border-stone-200 dark:border-zinc-700 text-zinc-500 dark:text-zinc-400
                              hover:border-orange-400 hover:text-orange-500 transition-colors"
                 >
                   <Icon size={20} />
@@ -91,42 +91,42 @@ export default function Contact() {
               value={`${window.location.origin}/gracias`}
             />
 
-            <label className="flex flex-col gap-1.5 text-sm font-medium text-zinc-700">
+            <label className="flex flex-col gap-1.5 text-sm font-medium text-zinc-700 dark:text-zinc-200">
               Tu nombre
               <input
                 type="text"
                 name="name"
                 required
                 placeholder="Federico Barrios"
-                className="rounded-xl border border-stone-200 bg-white px-4 py-2.5 text-zinc-900
+                className="rounded-xl border border-stone-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-4 py-2.5 text-zinc-900 dark:text-stone-50
                            placeholder:text-zinc-400 ring-accent transition-colors
-                           hover:border-stone-300 focus:border-orange-400"
+                           hover:border-stone-300 dark:hover:border-zinc-600 focus:border-orange-400"
               />
             </label>
 
-            <label className="flex flex-col gap-1.5 text-sm font-medium text-zinc-700">
+            <label className="flex flex-col gap-1.5 text-sm font-medium text-zinc-700 dark:text-zinc-200">
               Tu correo
               <input
                 type="email"
                 name="email"
                 required
                 placeholder="tu@email.com"
-                className="rounded-xl border border-stone-200 bg-white px-4 py-2.5 text-zinc-900
+                className="rounded-xl border border-stone-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-4 py-2.5 text-zinc-900 dark:text-stone-50
                            placeholder:text-zinc-400 ring-accent transition-colors
-                           hover:border-stone-300 focus:border-orange-400"
+                           hover:border-stone-300 dark:hover:border-zinc-600 focus:border-orange-400"
               />
             </label>
 
-            <label className="flex flex-col gap-1.5 text-sm font-medium text-zinc-700">
+            <label className="flex flex-col gap-1.5 text-sm font-medium text-zinc-700 dark:text-zinc-200">
               Mensaje
               <textarea
                 name="message"
                 rows={5}
                 required
                 placeholder="Hola Fede, quería consultarte sobre..."
-                className="rounded-xl border border-stone-200 bg-white px-4 py-2.5 text-zinc-900
+                className="rounded-xl border border-stone-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-4 py-2.5 text-zinc-900 dark:text-stone-50
                            placeholder:text-zinc-400 ring-accent transition-colors resize-none
-                           hover:border-stone-300 focus:border-orange-400"
+                           hover:border-stone-300 dark:hover:border-zinc-600 focus:border-orange-400"
               />
             </label>
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { DarkModeProvider } from './context/DarkModeContext.jsx'
 import Layout from './App.jsx'
 import Hero from './components/Hero.jsx'
 import Projects from './components/Projects.jsx'
@@ -12,6 +13,7 @@ import './index.css'
 
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <DarkModeProvider>
     <BrowserRouter>
       <Routes>
         <Route element={<Layout />}>
@@ -24,5 +26,6 @@ createRoot(document.getElementById('root')).render(
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
+    </DarkModeProvider>
   </React.StrictMode>
 )

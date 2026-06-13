@@ -96,8 +96,8 @@ export default function Projects() {
         {items.map((p, i) => (
           <motion.article
             key={p.title}
-            className={`${p.span} bg-white border border-stone-200 rounded-2xl overflow-hidden flex flex-col
-              hover:border-orange-400 hover:shadow-lg transition-all duration-200`}
+            className={`${p.span} bg-white dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800 rounded-2xl overflow-hidden flex flex-col
+              hover:border-orange-400 dark:hover:border-orange-500 hover:shadow-lg transition-all duration-200`}
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, ease: 'easeOut', delay: i * 0.05 }}
@@ -107,7 +107,7 @@ export default function Projects() {
             <button
               type="button"
               onClick={() => abrirModal(p.img, p.title)}
-              className="w-full overflow-hidden bg-stone-100 group flex-shrink-0"
+              className="w-full overflow-hidden bg-stone-100 dark:bg-zinc-800 group flex-shrink-0"
               aria-label={`Ampliar imagen de ${p.title}`}
             >
               <img
@@ -121,13 +121,13 @@ export default function Projects() {
             {/* Content */}
             <div className="p-5 flex flex-col flex-1">
               <div className="flex-1">
-                <h2 className="font-bold text-zinc-900 leading-tight">{p.title}</h2>
-                <p className="text-sm text-zinc-500 mt-1.5 leading-relaxed">{p.desc}</p>
+                <h2 className="font-bold text-zinc-900 dark:text-stone-50 leading-tight">{p.title}</h2>
+                <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-1.5 leading-relaxed">{p.desc}</p>
                 <div className="mt-3 flex flex-wrap gap-1.5">
                   {p.tech.split(' · ').map((t) => (
                     <span
                       key={t}
-                      className="text-xs px-2 py-0.5 rounded-md bg-stone-100 text-zinc-600 border border-stone-200"
+                      className="text-xs px-2 py-0.5 rounded-md bg-stone-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 border border-stone-200 dark:border-zinc-700"
                     >
                       {t}
                     </span>

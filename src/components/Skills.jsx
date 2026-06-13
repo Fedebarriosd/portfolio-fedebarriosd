@@ -29,18 +29,18 @@ function SkillChip({ Icon, label, Custom }) {
   const isValidIcon = typeof Icon === 'function';
   return (
     <HoverLift>
-      <div className="flex flex-col items-center gap-1.5 rounded-xl px-3 py-3 bg-white border border-stone-200
+      <div className="flex flex-col items-center gap-1.5 rounded-xl px-3 py-3 bg-white dark:bg-zinc-900 border border-stone-200 dark:border-zinc-700
                       hover:border-orange-400 hover:shadow-sm transition-all w-20 cursor-default">
         {isValidIcon ? (
-          <Icon className="h-7 w-7 text-zinc-700" aria-hidden="true" />
+          <Icon className="h-7 w-7 text-zinc-700 dark:text-zinc-300" aria-hidden="true" />
         ) : Custom ? (
           Custom
         ) : (
-          <div className="h-7 w-7 rounded grid place-items-center text-xs bg-stone-100 text-zinc-500">
+          <div className="h-7 w-7 rounded grid place-items-center text-xs bg-stone-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400">
             {label?.[0] ?? '?'}
           </div>
         )}
-        <p className="text-xs text-zinc-600 text-center leading-tight">{label}</p>
+        <p className="text-xs text-zinc-600 dark:text-zinc-300 text-center leading-tight">{label}</p>
       </div>
     </HoverLift>
   );
@@ -49,7 +49,7 @@ function SkillChip({ Icon, label, Custom }) {
 function SkillGroup({ category, items }) {
   return (
     <Reveal>
-      <div className="flex flex-col sm:flex-row sm:items-start gap-4 py-6 border-b border-stone-200 last:border-0">
+      <div className="flex flex-col sm:flex-row sm:items-start gap-4 py-6 border-b border-stone-200 dark:border-zinc-800 last:border-0">
         <span className="text-xs font-bold uppercase tracking-widest text-orange-500 sm:w-40 flex-shrink-0 pt-2">
           {category}
         </span>

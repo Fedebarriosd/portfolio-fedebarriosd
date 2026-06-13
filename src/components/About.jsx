@@ -9,7 +9,7 @@ import Skills from './Skills.jsx';
 const socials = [
   { href: 'mailto:fedebarriosd@gmail.com', Icon: Mail, label: 'Email' },
   { href: 'https://github.com/Fedebarriosd', Icon: Github, label: 'GitHub' },
-  { href: 'https://www.linkedin.com/in/federico-barrios-b29620321', Icon: Linkedin, label: 'LinkedIn' },
+  { href: 'https://www.linkedin.com/in/federico-barrios-3ab481416', Icon: Linkedin, label: 'LinkedIn' },
   { href: 'https://wa.me/595981598367', Icon: MessageCircle, label: 'WhatsApp' },
   { href: 'https://www.instagram.com/fedebarriosd', Icon: Instagram, label: 'Instagram' },
 ];
@@ -34,12 +34,12 @@ export default function About() {
                             transition={{ type: 'spring', stiffness: 250, damping: 18 }}
                             src={profilePic}
                             alt="Federico Barrios"
-                            className="w-40 h-40 rounded-full object-cover border-4 border-white shadow-xl ring-4 ring-stone-200"
+                            className="w-40 h-40 rounded-full object-cover border-4 border-white dark:border-zinc-800 shadow-xl ring-4 ring-stone-200 dark:ring-zinc-700"
                         />
 
-                        <h2 className="mt-5 font-bold text-xl text-zinc-900">Federico Barrios</h2>
-                        <p className="text-zinc-500 text-sm mt-1">Ing. Informática · UA</p>
-                        <p className="text-zinc-400 text-xs mt-0.5">@fedebarriosd</p>
+                        <h2 className="mt-5 font-bold text-xl text-zinc-900 dark:text-stone-50">Federico Barrios</h2>
+                        <p className="text-zinc-500 dark:text-zinc-400 text-sm mt-1">Ing. Informática · UA</p>
+                        <p className="text-zinc-400 dark:text-zinc-500 text-xs mt-0.5">@fedebarriosd</p>
 
                         {/* Social icons */}
                         <div className="mt-5 flex gap-2">
@@ -50,7 +50,7 @@ export default function About() {
                                     target={href.startsWith('mailto') ? undefined : '_blank'}
                                     rel="noreferrer"
                                     aria-label={label}
-                                    className="p-2 rounded-lg border border-stone-200 text-zinc-500
+                                    className="p-2 rounded-lg border border-stone-200 dark:border-zinc-700 text-zinc-500 dark:text-zinc-400
                                                hover:border-orange-400 hover:text-orange-500 transition-colors"
                                 >
                                     <Icon size={18} />
@@ -73,15 +73,15 @@ export default function About() {
                 {/* Scrollable content */}
                 <div>
                     <Reveal delay={0.1}>
-                        <p className="text-lg text-zinc-600 leading-relaxed">
-                            Hola, soy <span className="font-semibold text-zinc-900">Fede Barrios</span>, estudiante de Ingeniería Informática en la Universidad Americana de Asunción.
+                        <p className="text-lg text-zinc-600 dark:text-zinc-300 leading-relaxed">
+                            Hola, soy <span className="font-semibold text-zinc-900 dark:text-stone-50">Fede Barrios</span>, estudiante de Ingeniería Informática en la Universidad Americana de Asunción.
                             Me apasiona la tecnología desde el hardware hasta el software, y disfruto creando soluciones que combinan funcionalidad con buen diseño.
                         </p>
-                        <p className="mt-4 text-lg text-zinc-600 leading-relaxed">
-                            Soy un ferviente defensor del <span className="font-semibold text-zinc-900">software libre</span> — creo en las libertades digitales y en los sistemas auditables.
-                            Integro el Centro de Estudiantes de Ingeniería Informática de la Universidad Americana <span className="font-semibold text-zinc-900">(CEINFUA)</span>, donde participo activamente en la vida estudiantil.
+                        <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-300 leading-relaxed">
+                            Soy un ferviente defensor del <span className="font-semibold text-zinc-900 dark:text-stone-50">software libre</span> — creo en las libertades digitales y en los sistemas auditables.
+                            Integro el Centro de Estudiantes de Ingeniería Informática de la Universidad Americana <span className="font-semibold text-zinc-900 dark:text-stone-50">(CEINFUA)</span>, donde participo activamente en la vida estudiantil.
                         </p>
-                        <p className="mt-4 text-lg text-zinc-600 leading-relaxed">
+                        <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-300 leading-relaxed">
                             Mis principales intereses se centran en la informática, la música y la filosofía.
                         </p>
                     </Reveal>
@@ -91,7 +91,7 @@ export default function About() {
                         <Reveal delay={0.15}>
                             <div className="flex items-baseline gap-4 mb-8">
                                 <span className="text-orange-500 font-bold text-sm uppercase tracking-widest">Skills</span>
-                                <div className="flex-1 h-px bg-stone-200" />
+                                <div className="flex-1 h-px bg-stone-200 dark:bg-zinc-700" />
                             </div>
                         </Reveal>
                         <Skills />

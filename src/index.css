@@ -5,6 +5,6 @@
 
 @layer utilities {
   .btn-primary { @apply inline-flex items-center justify-center rounded-xl px-5 py-2.5 bg-orange-500 hover:bg-orange-600 text-white font-medium transition-colors; }
-  .btn-ghost   { @apply inline-flex items-center justify-center rounded-xl px-5 py-2.5 border-2 border-zinc-900 text-zinc-900 hover:bg-zinc-900 hover:text-white font-medium transition-colors; }
+  .btn-ghost   { @apply inline-flex items-center justify-center rounded-xl px-5 py-2.5 border-2 border-zinc-900 dark:border-stone-100 text-zinc-900 dark:text-stone-100 hover:bg-zinc-900 dark:hover:bg-stone-100 hover:text-white dark:hover:text-zinc-900 font-medium transition-colors; }
   .ring-accent { @apply focus:outline-none focus:ring-2 focus:ring-orange-400/50; }
 }

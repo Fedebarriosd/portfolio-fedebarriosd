@@ -34,7 +34,7 @@ export default function ImageModal({ src, alt = '', isOpen, onClose }) {
             onClick={onClose}
         >
             <div
-                className="relative max-w-4xl w-full rounded-2xl bg-white border border-stone-200 p-2 shadow-2xl outline-none"
+                className="relative max-w-4xl w-full rounded-2xl bg-white dark:bg-zinc-900 border border-stone-200 dark:border-zinc-700 p-2 shadow-2xl outline-none"
                 onClick={(e) => e.stopPropagation()}
             >
                 {/* Botón cerrar */}
@@ -43,9 +43,9 @@ export default function ImageModal({ src, alt = '', isOpen, onClose }) {
                     type="button"
                     aria-label="Cerrar"
                     onClick={onClose}
-                    className="absolute -top-3 -right-3 h-10 w-10 rounded-full bg-white border border-stone-200 shadow-md
+                    className="absolute -top-3 -right-3 h-10 w-10 rounded-full bg-white dark:bg-zinc-900 border border-stone-200 dark:border-zinc-700 shadow-md
                      hover:border-orange-400 hover:text-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-400/40
-                     text-zinc-600 text-xl leading-none flex items-center justify-center transition-colors"
+                     text-zinc-600 dark:text-zinc-300 text-xl leading-none flex items-center justify-center transition-colors"
                 >
                     ×
                 </button>

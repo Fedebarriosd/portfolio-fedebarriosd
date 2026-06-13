@@ -23,12 +23,12 @@ export default function Hero() {
                             Portfolio — {currentYear}
                         </p>
 
-                        <h1 className="text-6xl sm:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.9] text-zinc-900">
+                        <h1 className="text-6xl sm:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.9] text-zinc-900 dark:text-stone-50">
                             Federico<br />
                             <span className="text-orange-500">Barrios</span>
                         </h1>
 
-                        <p className="mt-7 text-lg text-zinc-500 max-w-md leading-relaxed">
+                        <p className="mt-7 text-lg text-zinc-500 dark:text-zinc-400 max-w-md leading-relaxed">
                             Estudiante de Ingeniería Informática y defensor del software libre. Construyo cosas que funcionan bien y se ven mejor.
                         </p>
 
@@ -57,7 +57,7 @@ export default function Hero() {
                             <img
                                 src={profilePic}
                                 alt="Federico Barrios"
-                                className="relative z-10 w-64 h-64 lg:w-80 lg:h-80 rounded-full object-cover border-4 border-white shadow-2xl"
+                                className="relative z-10 w-64 h-64 lg:w-80 lg:h-80 rounded-full object-cover border-4 border-white dark:border-zinc-800 shadow-2xl"
                             />
 
                             {/* Orange accent dot */}
