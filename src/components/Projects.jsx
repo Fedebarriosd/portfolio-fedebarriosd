@@ -11,7 +11,7 @@ const items = [
     img: '/Progheads.png',
     href: 'https://www.progheads.org/',
     cta: 'Ver en vivo',
-    tech: 'React · Bootstrap · Instagram API',
+    tech: 'React · Vite · Bootstrap',
     span: 'sm:col-span-2 lg:col-span-2',
   },
   {
@@ -68,6 +68,24 @@ const items = [
     tech: 'Bash',
     span: '',
   },
+  {
+    title: 'ASCII Cam',
+    desc: 'Filtro de webcam de ASCII art en tiempo real para OBS Studio en Windows.',
+    img: '/ASCII-Cam.webp',
+    href: 'https://github.com/Fedebarriosd/ASCII-cam',
+    cta: 'Ver en GitHub',
+    tech: 'Python · OBS Studio',
+    span: '',
+  },
+  {
+    title: 'Full Page Screenshot',
+    desc: 'Captura fotografías de páginas web enteras. Nadie necesita saber.',
+    img: '/Full-Page-Screenshot.png',
+    href: 'https://github.com/Fedebarriosd/Full-Page-Screenshot',
+    cta: 'Descargalo para Chromium!',
+    tech: 'JavaScript · Chrome Extension',
+    span: '',
+  }
 ];
 
 export default function Projects() {
@@ -114,7 +132,7 @@ export default function Projects() {
                 src={p.img}
                 alt={p.title}
                 loading="lazy"
-                className="w-full aspect-video object-cover transition-transform duration-300 group-hover:scale-105 cursor-zoom-in"
+                className={`w-full aspect-video object-cover transition-transform duration-300 group-hover:scale-105 cursor-zoom-in ${p.title === 'Full Page Screenshot' ? 'image-rendering-[pixelated]' : ''}`}
               />
             </button>
 
