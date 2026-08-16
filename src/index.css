@@ -4,7 +4,156 @@
 @tailwind utilities;
 
 @layer utilities {
-  .btn-primary { @apply inline-flex items-center justify-center rounded-xl px-5 py-2.5 bg-orange-500 hover:bg-orange-600 text-white font-medium transition-colors; }
-  .btn-ghost   { @apply inline-flex items-center justify-center rounded-xl px-5 py-2.5 border-2 border-zinc-900 dark:border-stone-100 text-zinc-900 dark:text-stone-100 hover:bg-zinc-900 dark:hover:bg-stone-100 hover:text-white dark:hover:text-zinc-900 font-medium transition-colors; }
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-none px-5 py-2.5 bg-orange-500 border-2 border-zinc-900 dark:border-orange-500 text-white font-bold uppercase tracking-wider text-sm
+           shadow-[4px_4px_0_0_theme(colors.zinc.900)] dark:shadow-[4px_4px_0_0_theme(colors.orange.900)]
+           hover:bg-orange-600 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_0_theme(colors.zinc.900)] dark:hover:shadow-[6px_6px_0_0_theme(colors.orange.900)]
+           active:translate-y-0 active:shadow-[2px_2px_0_0_theme(colors.zinc.900)] dark:active:shadow-[2px_2px_0_0_theme(colors.orange.900)]
+           transition-all;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center rounded-none px-5 py-2.5 border-2 border-zinc-900 dark:border-stone-100 text-zinc-900 dark:text-stone-100 font-bold uppercase tracking-wider text-sm
+           shadow-[4px_4px_0_0_theme(colors.zinc.900)] dark:shadow-[4px_4px_0_0_theme(colors.stone.100)]
+           hover:bg-zinc-900 dark:hover:bg-stone-100 hover:text-white dark:hover:text-zinc-900 hover:-translate-y-0.5
+           hover:shadow-[6px_6px_0_0_theme(colors.zinc.900)] dark:hover:shadow-[6px_6px_0_0_theme(colors.stone.100)]
+           active:translate-y-0 active:shadow-[2px_2px_0_0_theme(colors.zinc.900)] dark:active:shadow-[2px_2px_0_0_theme(colors.stone.100)]
+           transition-all;
+  }
   .ring-accent { @apply focus:outline-none focus:ring-2 focus:ring-orange-400/50; }
+  .card-retro {
+    @apply rounded-none border-2 border-zinc-900 dark:border-zinc-700
+           shadow-[4px_4px_0_0_theme(colors.orange.500)] dark:shadow-[4px_4px_0_0_theme(colors.orange.600)];
+  }
+  .card-retro-navy {
+    @apply rounded-none border-2 border-zinc-900 dark:border-zinc-700
+           shadow-[4px_4px_0_0_theme(colors.navy.500)] dark:shadow-[4px_4px_0_0_theme(colors.periwinkle.500)];
+  }
+  .card-retro-amber {
+    @apply rounded-none border-2 border-zinc-900 dark:border-zinc-700
+           shadow-[4px_4px_0_0_theme(colors.amber.500)] dark:shadow-[4px_4px_0_0_theme(colors.amber.600)];
+  }
+  .card-retro-periwinkle {
+    @apply rounded-none border-2 border-zinc-900 dark:border-zinc-700
+           shadow-[4px_4px_0_0_theme(colors.periwinkle.500)] dark:shadow-[4px_4px_0_0_theme(colors.periwinkle.600)];
+  }
+  .eyebrow-bracket::before { content: '[ '; }
+  .eyebrow-bracket::after  { content: ' ]'; }
+
+  /* Page-accent button variants — same retro treatment as .btn-primary, different brand color */
+  .btn-navy {
+    @apply inline-flex items-center justify-center rounded-none px-5 py-2.5 bg-navy-500 border-2 border-zinc-900 dark:border-periwinkle-400 text-white font-bold uppercase tracking-wider text-sm
+           shadow-[4px_4px_0_0_theme(colors.zinc.900)] dark:shadow-[4px_4px_0_0_theme(colors.navy.900)]
+           hover:bg-navy-600 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_0_theme(colors.zinc.900)] dark:hover:shadow-[6px_6px_0_0_theme(colors.navy.900)]
+           active:translate-y-0 active:shadow-[2px_2px_0_0_theme(colors.zinc.900)] dark:active:shadow-[2px_2px_0_0_theme(colors.navy.900)]
+           transition-all;
+  }
+  .btn-amber {
+    @apply inline-flex items-center justify-center rounded-none px-5 py-2.5 bg-amber-500 border-2 border-zinc-900 text-zinc-900 font-bold uppercase tracking-wider text-sm
+           shadow-[4px_4px_0_0_theme(colors.zinc.900)]
+           hover:bg-amber-400 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_0_theme(colors.zinc.900)]
+           active:translate-y-0 active:shadow-[2px_2px_0_0_theme(colors.zinc.900)]
+           transition-all;
+  }
+  .btn-periwinkle {
+    @apply inline-flex items-center justify-center rounded-none px-5 py-2.5 bg-periwinkle-500 border-2 border-zinc-900 text-zinc-900 font-bold uppercase tracking-wider text-sm
+           shadow-[4px_4px_0_0_theme(colors.zinc.900)]
+           hover:bg-periwinkle-400 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_0_theme(colors.zinc.900)]
+           active:translate-y-0 active:shadow-[2px_2px_0_0_theme(colors.zinc.900)]
+           transition-all;
+  }
+
+  /* CRT-style horizontal scanlines */
+  .texture-scanlines {
+    background-image: repeating-linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.18) 0px,
+      rgba(0, 0, 0, 0.18) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+  }
+
+  /* Faint graph-paper grid background */
+  .texture-grid {
+    background-image:
+      linear-gradient(rgba(24, 24, 27, 0.06) 1px, transparent 1px),
+      linear-gradient(to right, rgba(24, 24, 27, 0.06) 1px, transparent 1px);
+    background-size: 14px 14px;
+  }
+  .dark .texture-grid {
+    background-image:
+      linear-gradient(rgba(244, 244, 245, 0.07) 1px, transparent 1px),
+      linear-gradient(to right, rgba(244, 244, 245, 0.07) 1px, transparent 1px);
+  }
+
+  /* Diagonal hazard-stripe accent */
+  .texture-stripes {
+    background-image: repeating-linear-gradient(
+      45deg,
+      theme('colors.orange.500') 0px,
+      theme('colors.orange.500') 6px,
+      theme('colors.navy.500') 6px,
+      theme('colors.navy.500') 12px,
+      theme('colors.amber.500') 12px,
+      theme('colors.amber.500') 18px
+    );
+  }
+
+  /* Per-page subtle background patterns — cheap linear-gradients, pinned to the
+     viewport (not the scrollable page) so tall pages don't force full-page rasterization */
+  .bg-page-home,
+  .bg-page-about,
+  .bg-page-cslua,
+  .bg-page-projects,
+  .bg-page-contact {
+    background-attachment: fixed;
+  }
+  .bg-page-home {
+    background-image: repeating-linear-gradient(135deg, rgba(255, 91, 48, 0.05) 0px, rgba(255, 91, 48, 0.05) 1px, transparent 1px, transparent 40px);
+  }
+  .dark .bg-page-home {
+    background-image: repeating-linear-gradient(135deg, rgba(255, 91, 48, 0.07) 0px, rgba(255, 91, 48, 0.07) 1px, transparent 1px, transparent 40px);
+  }
+
+  .bg-page-about {
+    background-image:
+      linear-gradient(rgba(163, 187, 255, 0.18) 1px, transparent 1px),
+      linear-gradient(to right, rgba(163, 187, 255, 0.18) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+  .dark .bg-page-about {
+    background-image:
+      linear-gradient(rgba(163, 187, 255, 0.1) 1px, transparent 1px),
+      linear-gradient(to right, rgba(163, 187, 255, 0.1) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  .bg-page-cslua {
+    background-image: radial-gradient(rgba(0, 27, 101, 0.18) 1.5px, transparent 1.5px);
+    background-size: 22px 22px;
+  }
+  .dark .bg-page-cslua {
+    background-image: radial-gradient(rgba(163, 187, 255, 0.16) 1.5px, transparent 1.5px);
+    background-size: 22px 22px;
+  }
+
+  .bg-page-projects {
+    background-image: repeating-linear-gradient(-45deg, rgba(255, 195, 48, 0.08) 0px, rgba(255, 195, 48, 0.08) 1px, transparent 1px, transparent 24px);
+  }
+  .dark .bg-page-projects {
+    background-image: repeating-linear-gradient(-45deg, rgba(255, 195, 48, 0.09) 0px, rgba(255, 195, 48, 0.09) 1px, transparent 1px, transparent 24px);
+  }
+
+  .bg-page-contact {
+    background-image:
+      linear-gradient(rgba(255, 91, 48, 0.05) 1px, transparent 1px),
+      linear-gradient(to right, rgba(255, 91, 48, 0.05) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+  .dark .bg-page-contact {
+    background-image:
+      linear-gradient(rgba(255, 91, 48, 0.07) 1px, transparent 1px),
+      linear-gradient(to right, rgba(255, 91, 48, 0.07) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
 }

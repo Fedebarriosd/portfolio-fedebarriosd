@@ -20,7 +20,7 @@ export default function About() {
             {/* Page header */}
             <Reveal>
                 <div className="flex items-baseline gap-4 mb-12">
-                    <span className="text-orange-500 font-bold text-sm uppercase tracking-widest">02</span>
+                    <span className="eyebrow-bracket text-periwinkle-600 dark:text-periwinkle-400 font-bold text-sm uppercase tracking-widest">02</span>
                     <h1 className="text-4xl sm:text-5xl font-black tracking-tight">Sobre mí</h1>
                 </div>
             </Reveal>
@@ -50,8 +50,8 @@ export default function About() {
                                     target={href.startsWith('mailto') ? undefined : '_blank'}
                                     rel="noreferrer"
                                     aria-label={label}
-                                    className="p-2 rounded-lg border border-stone-200 dark:border-zinc-700 text-zinc-500 dark:text-zinc-400
-                                               hover:border-orange-400 hover:text-orange-500 transition-colors"
+                                    className="p-2 rounded-none border-2 border-stone-200 dark:border-zinc-700 text-zinc-500 dark:text-zinc-400
+                                               hover:border-periwinkle-400 hover:text-periwinkle-600 dark:hover:text-periwinkle-400 transition-colors"
                                 >
                                     <Icon size={18} />
                                 </a>
@@ -60,7 +60,7 @@ export default function About() {
 
                         {/* CTA buttons */}
                         <div className="mt-6 flex flex-col gap-2.5">
-                            <Link to="/projects" className="btn-primary gap-2 text-sm justify-center">
+                            <Link to="/projects" className="btn-periwinkle gap-2 text-sm justify-center">
                                 Ver proyectos <ArrowRight size={15} />
                             </Link>
                             <Link to="/contact" className="btn-ghost gap-2 text-sm justify-center">
@@ -90,8 +90,8 @@ export default function About() {
                     <div className="mt-12">
                         <Reveal delay={0.15}>
                             <div className="flex items-baseline gap-4 mb-8">
-                                <span className="text-orange-500 font-bold text-sm uppercase tracking-widest">Skills</span>
-                                <div className="flex-1 h-px bg-stone-200 dark:bg-zinc-700" />
+                                <span className="eyebrow-bracket text-periwinkle-600 dark:text-periwinkle-400 font-bold text-sm uppercase tracking-widest">Skills</span>
+                                <div className="texture-stripes flex-1 h-[3px] opacity-70" />
                             </div>
                         </Reveal>
                         <Skills />

@@ -1,12 +1,73 @@
-import React from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { ArrowRight, Mail } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import profilePic from '../assets/images/Hero.png';
 
 export default function Hero() {
-    
+
     const currentYear = new Date().getFullYear();
+
+    // Orange dot orbits the photo on a fixed-radius circle, draggable around it.
+    const orbitRef = useRef(null);
+    const draggingRef = useRef(false);
+    const [angle, setAngle] = useState(-45); // degrees, 0 = right, -90 = top
+    const [radius, setRadius] = useState(0); // px, photo radius + outer ring offset
+
+    useEffect(() => {
+        const el = orbitRef.current;
+        if (!el) return;
+        const updateRadius = () => setRadius(el.getBoundingClientRect().width / 2 + 34);
+        updateRadius();
+        const observer = new ResizeObserver(updateRadius);
+        observer.observe(el);
+        return () => observer.disconnect();
+    }, []);
+
+    const updateAngleFromPointer = useCallback((clientX, clientY) => {
+        const el = orbitRef.current;
+        if (!el) return;
+        const rect = el.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+        const rad = Math.atan2(clientY - cy, clientX - cx);
+        setAngle((rad * 180) / Math.PI);
+    }, []);
+
+    const handlePointerDown = (e) => {
+        draggingRef.current = true;
+        e.target.setPointerCapture?.(e.pointerId);
+        updateAngleFromPointer(e.clientX, e.clientY);
+    };
+
+    const handleMouseDown = (e) => {
+        draggingRef.current = true;
+        updateAngleFromPointer(e.clientX, e.clientY);
+    };
+
+    useEffect(() => {
+        const handleMove = (e) => {
+            if (!draggingRef.current) return;
+            updateAngleFromPointer(e.clientX, e.clientY);
+        };
+        const handleUp = () => {
+            draggingRef.current = false;
+        };
+        window.addEventListener('pointermove', handleMove);
+        window.addEventListener('pointerup', handleUp);
+        window.addEventListener('mousemove', handleMove);
+        window.addEventListener('mouseup', handleUp);
+        return () => {
+            window.removeEventListener('pointermove', handleMove);
+            window.removeEventListener('pointerup', handleUp);
+            window.removeEventListener('mousemove', handleMove);
+            window.removeEventListener('mouseup', handleUp);
+        };
+    }, [updateAngleFromPointer]);
+
+    const rad = (angle * Math.PI) / 180;
+    const dotX = `calc(50% + ${radius * Math.cos(rad)}px)`;
+    const dotY = `calc(50% + ${radius * Math.sin(rad)}px)`;
 
     return (
         <section className="min-h-[calc(100vh-65px)] flex items-center">
@@ -19,7 +80,7 @@ export default function Hero() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.55, ease: 'easeOut' }}
                     >
-                        <p className="text-xs font-bold uppercase tracking-[0.3em] text-orange-500 mb-5">
+                        <p className="eyebrow-bracket text-xs font-bold uppercase tracking-[0.3em] text-orange-500 mb-5">
                             Portfolio — {currentYear}
                         </p>
 
@@ -49,19 +110,30 @@ export default function Hero() {
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.6, ease: 'easeOut', delay: 0.12 }}
                     >
-                        <div className="relative">
-                            {/* Orange decorative rings */}
+                        <div ref={orbitRef} className="relative">
+                            {/* Decorative rings — coral inner, periwinkle outer */}
                             <div className="absolute -inset-4 rounded-full border-2 border-orange-500/25" />
-                            <div className="absolute -inset-8 rounded-full border border-orange-500/12" />
+                            <div className="absolute -inset-8 rounded-full border border-periwinkle-500/40" />
 
                             <img
                                 src={profilePic}
                                 alt="Federico Barrios"
                                 className="relative z-10 w-64 h-64 lg:w-80 lg:h-80 rounded-full object-cover border-4 border-white dark:border-zinc-800 shadow-2xl"
                             />
+                            {/* CRT scanline sheen clipped to the photo */}
+                            <div className="texture-scanlines absolute z-10 inset-0 w-64 h-64 lg:w-80 lg:h-80 rounded-full pointer-events-none opacity-30 mix-blend-overlay" />
 
-                            {/* Orange accent dot */}
-                            <div className="absolute top-2 right-2 z-20 w-5 h-5 rounded-full bg-orange-500 border-2 border-white shadow-md" />
+                            {/* Amber accent dot — draggable around the photo's edge */}
+                            <div
+                                onPointerDown={handlePointerDown}
+                                onMouseDown={handleMouseDown}
+                                className="absolute z-20 w-5 h-5 rounded-full bg-amber-400 border-2 border-white shadow-md cursor-grab active:cursor-grabbing touch-none"
+                                style={{
+                                    left: dotX,
+                                    top: dotY,
+                                    transform: 'translate(-50%, -50%)',
+                                }}
+                            />
                         </div>
                     </motion.div>
                 </div>

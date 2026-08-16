@@ -1,15 +1,39 @@
 import React, { useState } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useLocation } from 'react-router-dom';
 import { Mail, Menu, X, Sun, Moon } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useDarkMode } from '../context/DarkModeContext.jsx';
 
+// Each page owns an accent color; the nav underline/badge mirrors whichever page is active.
+const PAGE_ACCENTS = {
+    '/about': 'periwinkle',
+    '/cslua': 'navy',
+    '/projects': 'amber',
+    '/contact': 'orange',
+};
+
+const DESKTOP_ACTIVE_CLASSES = {
+    orange: 'border-orange-500',
+    periwinkle: 'border-periwinkle-400',
+    navy: 'border-navy-500 dark:border-periwinkle-400',
+    amber: 'border-amber-500',
+};
+
+const MOBILE_ACTIVE_CLASSES = {
+    orange: 'bg-orange-50 dark:bg-orange-950 text-orange-600 dark:text-orange-400',
+    periwinkle: 'bg-periwinkle-50 dark:bg-periwinkle-950 text-periwinkle-700 dark:text-periwinkle-400',
+    navy: 'bg-navy-50 dark:bg-navy-950 text-navy-600 dark:text-periwinkle-400',
+    amber: 'bg-amber-50 dark:bg-amber-950 text-amber-700 dark:text-amber-400',
+};
+
 export default function Navbar() {
     const [open, setOpen] = useState(false);
     const { dark, toggle } = useDarkMode();
+    const { pathname } = useLocation();
 
     const navItems = [
         { to: '/about', label: 'Sobre mí' },
+        { to: '/cslua', label: 'CSLUA' },
         { to: '/projects', label: 'Proyectos' },
         { to: '/contact', label: 'Contacto' },
     ];
@@ -17,7 +41,7 @@ export default function Navbar() {
     const desktopLinkClass = ({ isActive }) =>
         `text-sm font-medium transition-colors pb-0.5 ${
             isActive
-                ? 'text-zinc-900 dark:text-stone-50 border-b-2 border-orange-500'
+                ? `text-zinc-900 dark:text-stone-50 border-b-2 ${DESKTOP_ACTIVE_CLASSES[PAGE_ACCENTS[pathname] ?? 'orange']}`
                 : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-stone-50'
         }`;
 
@@ -31,7 +55,7 @@ export default function Navbar() {
                     to="/"
                     className="font-bold tracking-tight text-zinc-900 dark:text-stone-50 hover:text-orange-500 dark:hover:text-orange-400 transition-colors"
                 >
-                    Federico Barrios
+                    <span className="text-orange-500">&gt;</span> Federico Barrios
                 </Link>
 
                 {/* Desktop nav */}
@@ -59,7 +83,7 @@ export default function Navbar() {
                     type="button"
                     onClick={toggle}
                     aria-label={dark ? 'Activar modo claro' : 'Activar modo oscuro'}
-                    className="p-2 rounded-xl border border-stone-200 dark:border-zinc-700 hover:bg-stone-100 dark:hover:bg-zinc-800 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-stone-50 transition-colors"
+                    className="p-2 rounded-none border-2 border-stone-200 dark:border-zinc-700 hover:bg-stone-100 dark:hover:bg-zinc-800 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-stone-50 transition-colors"
                 >
                     {dark ? <Sun size={18} /> : <Moon size={18} />}
                 </button>
@@ -67,7 +91,7 @@ export default function Navbar() {
                 {/* Mobile menu toggle */}
                 <button
                     type="button"
-                    className="sm:hidden p-2 rounded-xl border border-stone-200 dark:border-zinc-700 hover:bg-stone-100 dark:hover:bg-zinc-800 text-zinc-700 dark:text-zinc-300 transition-colors"
+                    className="sm:hidden p-2 rounded-none border-2 border-stone-200 dark:border-zinc-700 hover:bg-stone-100 dark:hover:bg-zinc-800 text-zinc-700 dark:text-zinc-300 transition-colors"
                     aria-label="Abrir menú"
                     aria-expanded={open}
                     onClick={() => setOpen((v) => !v)}
@@ -86,9 +110,9 @@ export default function Navbar() {
                                 to={item.to}
                                 onClick={closeMenu}
                                 className={({ isActive }) =>
-                                    `rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${
+                                    `rounded-none px-3 py-2.5 text-sm font-medium transition-colors ${
                                         isActive
-                                            ? 'bg-orange-50 dark:bg-orange-950 text-orange-600 dark:text-orange-400'
+                                            ? MOBILE_ACTIVE_CLASSES[PAGE_ACCENTS[item.to] ?? 'orange']
                                             : 'text-zinc-600 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-800'
                                     }`
                                 }

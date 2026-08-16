@@ -12,15 +12,6 @@ const items = [
     href: 'https://www.progheads.org/',
     cta: 'Ver en vivo',
     tech: 'React · Vite · Bootstrap',
-    span: 'sm:col-span-2 lg:col-span-2',
-  },
-  {
-    title: 'Portfolio Personal',
-    desc: 'Mi portfolio con proyectos, habilidades y contacto.',
-    img: '/Banner.png',
-    href: 'https://www.fedebarrios.com/',
-    cta: 'Ya estás aquí',
-    tech: 'React · Vite · Tailwind',
     span: '',
   },
   {
@@ -41,51 +32,45 @@ const items = [
     tech: 'C · Raylib · CMake',
     span: '',
   },
+];
+
+const more = [
+  {
+    title: 'Portfolio Personal',
+    desc: 'Mi portfolio con proyectos, habilidades y contacto.',
+    href: 'https://www.fedebarriosd.com/',
+    tech: 'React · Vite · Tailwind',
+  },
   {
     title: 'Automatools',
     desc: 'Herramientas para trabajar con autómatas finitos deterministas y no deterministas.',
-    img: '/Automatas.jpg',
     href: 'https://github.com/Fedebarriosd/Automatools',
-    cta: 'Ver en GitHub',
     tech: 'C · Graphviz',
-    span: '',
   },
   {
     title: 'QR Generator',
     desc: 'Generador de QR offline desde el navegador. Soporta URLs, texto, contactos vCard y WhatsApp.',
-    img: '/QR.webp',
     href: 'https://github.com/Fedebarriosd/qr-generator',
-    cta: 'Ver en GitHub',
     tech: 'HTML · JavaScript · QRious',
-    span: '',
   },
   {
     title: 'face',
     desc: 'Utilidades Bash: copia emoticones ASCII al portapapeles y gestiona el clipboard en Wayland, X11 y macOS.',
-    img: '/Face.webp',
     href: 'https://github.com/Fedebarriosd/face',
-    cta: 'Ver en GitHub',
     tech: 'Bash',
-    span: '',
   },
   {
     title: 'ASCII Cam',
     desc: 'Filtro de webcam de ASCII art en tiempo real para OBS Studio en Windows.',
-    img: '/ASCII-Cam.webp',
     href: 'https://github.com/Fedebarriosd/ASCII-cam',
-    cta: 'Ver en GitHub',
     tech: 'Python · OBS Studio',
-    span: '',
   },
   {
     title: 'Full Page Screenshot',
     desc: 'Captura fotografías de páginas web enteras. Nadie necesita saber.',
-    img: '/Full-Page-Screenshot.png',
     href: 'https://github.com/Fedebarriosd/Full-Page-Screenshot',
-    cta: 'Descargalo para Chromium!',
     tech: 'JavaScript · Chrome Extension',
-    span: '',
-  }
+  },
 ];
 
 export default function Projects() {
@@ -104,7 +89,7 @@ export default function Projects() {
       {/* Page header */}
       <Reveal>
         <div className="flex items-baseline gap-4 mb-10">
-          <span className="text-orange-500 font-bold text-sm uppercase tracking-widest">03</span>
+          <span className="eyebrow-bracket text-amber-600 dark:text-amber-400 font-bold text-sm uppercase tracking-widest">04</span>
           <h1 className="text-4xl sm:text-5xl font-black tracking-tight">Proyectos</h1>
         </div>
       </Reveal>
@@ -114,8 +99,8 @@ export default function Projects() {
         {items.map((p, i) => (
           <motion.article
             key={p.title}
-            className={`${p.span} bg-white dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800 rounded-2xl overflow-hidden flex flex-col
-              hover:border-orange-400 dark:hover:border-orange-500 hover:shadow-lg transition-all duration-200`}
+            className={`${p.span} bg-white dark:bg-zinc-900 card-retro-amber overflow-hidden flex flex-col
+              hover:border-amber-400 dark:hover:border-amber-500 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_0_theme(colors.amber.500)] transition-all duration-200`}
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, ease: 'easeOut', delay: i * 0.05 }}
@@ -137,7 +122,7 @@ export default function Projects() {
             </button>
 
             {/* Content */}
-            <div className="p-5 flex flex-col flex-1">
+            <div className="p-5 flex flex-col flex-1 texture-grid">
               <div className="flex-1">
                 <h2 className="font-bold text-zinc-900 dark:text-stone-50 leading-tight">{p.title}</h2>
                 <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-1.5 leading-relaxed">{p.desc}</p>
@@ -145,7 +130,7 @@ export default function Projects() {
                   {p.tech.split(' · ').map((t) => (
                     <span
                       key={t}
-                      className="text-xs px-2 py-0.5 rounded-md bg-stone-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 border border-stone-200 dark:border-zinc-700"
+                      className="text-xs px-2 py-0.5 rounded-none bg-stone-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 border border-stone-200 dark:border-zinc-700"
                     >
                       {t}
                     </span>
@@ -157,7 +142,7 @@ export default function Projects() {
                 href={p.href}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-orange-500 hover:text-orange-600 transition-colors"
+                className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-amber-600 dark:text-amber-400 hover:text-amber-700 dark:hover:text-amber-300 transition-colors"
               >
                 {p.cta} <ExternalLink size={14} />
               </a>
@@ -165,6 +150,34 @@ export default function Projects() {
           </motion.article>
         ))}
       </div>
+
+      {/* More projects — compact list */}
+      <Reveal>
+        <div className="mt-14">
+          <h2 className="eyebrow-bracket text-sm font-bold uppercase tracking-widest text-zinc-500 dark:text-zinc-400 mb-4">
+            Otros proyectos
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
+            {more.map((p) => (
+              <a
+                key={p.title}
+                href={p.href}
+                target="_blank"
+                rel="noreferrer"
+                className="group flex items-start justify-between gap-4 py-2 border-b border-stone-200 dark:border-zinc-800 hover:border-amber-400 dark:hover:border-amber-500 transition-colors"
+              >
+                <div>
+                  <h3 className="font-semibold text-sm text-zinc-900 dark:text-stone-50 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                    {p.title}
+                  </h3>
+                  <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">{p.desc}</p>
+                </div>
+                <ExternalLink size={14} className="shrink-0 mt-1 text-zinc-400 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors" />
+              </a>
+            ))}
+          </div>
+        </div>
+      </Reveal>
 
       <ImageModal
         src={modalSrc}

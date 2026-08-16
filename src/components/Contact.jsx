@@ -36,7 +36,7 @@ export default function Contact() {
       {/* Page header */}
       <Reveal>
         <div className="flex items-baseline gap-4 mb-12">
-          <span className="text-orange-500 font-bold text-sm uppercase tracking-widest">04</span>
+          <span className="eyebrow-bracket text-orange-500 font-bold text-sm uppercase tracking-widest">05</span>
           <h1 className="text-4xl sm:text-5xl font-black tracking-tight">Hablemos</h1>
         </div>
       </Reveal>
@@ -57,7 +57,7 @@ export default function Contact() {
           </a>
 
           <div className="mt-8">
-            <p className="text-sm font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest mb-4">
+            <p className="eyebrow-bracket text-sm font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest mb-4">
               También en
             </p>
             <div className="flex gap-3">
@@ -68,7 +68,7 @@ export default function Contact() {
                   target={href.startsWith('mailto') ? undefined : '_blank'}
                   rel="noreferrer"
                   aria-label={label}
-                  className="p-2.5 rounded-xl border border-stone-200 dark:border-zinc-700 text-zinc-500 dark:text-zinc-400
+                  className="p-2.5 rounded-none border-2 border-stone-200 dark:border-zinc-700 text-zinc-500 dark:text-zinc-400
                              hover:border-orange-400 hover:text-orange-500 transition-colors"
                 >
                   <Icon size={20} />
@@ -98,7 +98,7 @@ export default function Contact() {
                 name="name"
                 required
                 placeholder="Federico Barrios"
-                className="rounded-xl border border-stone-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-4 py-2.5 text-zinc-900 dark:text-stone-50
+                className="rounded-none border-2 border-stone-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-4 py-2.5 text-zinc-900 dark:text-stone-50
                            placeholder:text-zinc-400 ring-accent transition-colors
                            hover:border-stone-300 dark:hover:border-zinc-600 focus:border-orange-400"
               />
@@ -111,7 +111,7 @@ export default function Contact() {
                 name="email"
                 required
                 placeholder="tu@email.com"
-                className="rounded-xl border border-stone-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-4 py-2.5 text-zinc-900 dark:text-stone-50
+                className="rounded-none border-2 border-stone-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-4 py-2.5 text-zinc-900 dark:text-stone-50
                            placeholder:text-zinc-400 ring-accent transition-colors
                            hover:border-stone-300 dark:hover:border-zinc-600 focus:border-orange-400"
               />
@@ -124,7 +124,7 @@ export default function Contact() {
                 rows={5}
                 required
                 placeholder="Hola Fede, quería consultarte sobre..."
-                className="rounded-xl border border-stone-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-4 py-2.5 text-zinc-900 dark:text-stone-50
+                className="rounded-none border-2 border-stone-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-4 py-2.5 text-zinc-900 dark:text-stone-50
                            placeholder:text-zinc-400 ring-accent transition-colors resize-none
                            hover:border-stone-300 dark:hover:border-zinc-600 focus:border-orange-400"
               />
