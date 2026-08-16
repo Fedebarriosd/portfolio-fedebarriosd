@@ -4,15 +4,7 @@ import { Github } from 'lucide-react';
 import Navbar from './components/Navbar.jsx';
 import TopProgress from './components/TopProgress.jsx';
 import Cursor from './components/Cursor.jsx';
-
-// Each page gets its own subtle full-bleed background pattern, matching its accent color.
-const PAGE_BACKGROUNDS = {
-    '/': 'bg-page-home',
-    '/about': 'bg-page-about',
-    '/cslua': 'bg-page-cslua',
-    '/projects': 'bg-page-projects',
-    '/contact': 'bg-page-contact',
-};
+import { getPageTheme } from './pageTheme.js';
 
 export default function Layout() {
     const { pathname } = useLocation();
@@ -22,7 +14,7 @@ export default function Layout() {
             <TopProgress />
             <Navbar />
             <Cursor />
-            <main className={PAGE_BACKGROUNDS[pathname] ?? ''}>
+            <main className={getPageTheme(pathname).bgClass ?? ''}>
                 <Outlet />
             </main>
             <footer className="border-t border-stone-200 dark:border-zinc-800 mt-16">

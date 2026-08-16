@@ -11,6 +11,7 @@ export default function Hero() {
     // Orange dot orbits the photo on a fixed-radius circle, draggable around it.
     const orbitRef = useRef(null);
     const draggingRef = useRef(false);
+    const centerRef = useRef({ cx: 0, cy: 0 }); // orbit center, captured once per drag gesture
     const [angle, setAngle] = useState(-45); // degrees, 0 = right, -90 = top
     const [radius, setRadius] = useState(0); // px, photo radius + outer ring offset
 
@@ -25,23 +26,17 @@ export default function Hero() {
     }, []);
 
     const updateAngleFromPointer = useCallback((clientX, clientY) => {
-        const el = orbitRef.current;
-        if (!el) return;
-        const rect = el.getBoundingClientRect();
-        const cx = rect.left + rect.width / 2;
-        const cy = rect.top + rect.height / 2;
+        const { cx, cy } = centerRef.current;
         const rad = Math.atan2(clientY - cy, clientX - cx);
         setAngle((rad * 180) / Math.PI);
     }, []);
 
     const handlePointerDown = (e) => {
+        const rect = orbitRef.current?.getBoundingClientRect();
+        if (!rect) return;
+        centerRef.current = { cx: rect.left + rect.width / 2, cy: rect.top + rect.height / 2 };
         draggingRef.current = true;
         e.target.setPointerCapture?.(e.pointerId);
-        updateAngleFromPointer(e.clientX, e.clientY);
-    };
-
-    const handleMouseDown = (e) => {
-        draggingRef.current = true;
         updateAngleFromPointer(e.clientX, e.clientY);
     };
 
@@ -55,13 +50,9 @@ export default function Hero() {
         };
         window.addEventListener('pointermove', handleMove);
         window.addEventListener('pointerup', handleUp);
-        window.addEventListener('mousemove', handleMove);
-        window.addEventListener('mouseup', handleUp);
         return () => {
             window.removeEventListener('pointermove', handleMove);
             window.removeEventListener('pointerup', handleUp);
-            window.removeEventListener('mousemove', handleMove);
-            window.removeEventListener('mouseup', handleUp);
         };
     }, [updateAngleFromPointer]);
 
@@ -126,7 +117,6 @@ export default function Hero() {
                             {/* Amber accent dot — draggable around the photo's edge */}
                             <div
                                 onPointerDown={handlePointerDown}
-                                onMouseDown={handleMouseDown}
                                 className="absolute z-20 w-5 h-5 rounded-full bg-amber-400 border-2 border-white shadow-md cursor-grab active:cursor-grabbing touch-none"
                                 style={{
                                     left: dotX,
