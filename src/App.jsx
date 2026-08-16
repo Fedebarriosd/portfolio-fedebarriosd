@@ -4,6 +4,7 @@ import { Github } from 'lucide-react';
 import Navbar from './components/Navbar.jsx';
 import TopProgress from './components/TopProgress.jsx';
 import Cursor from './components/Cursor.jsx';
+import VimNav from './components/VimNav.jsx';
 import { getPageTheme } from './pageTheme.js';
 
 export default function Layout() {
@@ -14,6 +15,7 @@ export default function Layout() {
             <TopProgress />
             <Navbar />
             <Cursor />
+            <VimNav />
             <main className={getPageTheme(pathname).bgClass ?? ''}>
                 <Outlet />
             </main>

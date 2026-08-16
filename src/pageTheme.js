@@ -37,3 +37,6 @@ export const PAGE_THEME = {
 export function getPageTheme(pathname) {
     return PAGE_THEME[pathname] ?? {};
 }
+
+// Page order for h/l vim-style navigation — mirrors the Navbar's left-to-right order.
+export const PAGE_ORDER = ['/', '/about', '/cslua', '/projects', '/contact'];
