@@ -79,7 +79,6 @@ export default function VimNav() {
         <div className="fixed bottom-4 left-4 z-[60] flex items-center gap-2 bg-white dark:bg-zinc-900 border-2 border-zinc-900 dark:border-zinc-700 px-3 py-2 shadow-[3px_3px_0_0_theme(colors.orange.500)] text-xs">
             <span className="text-zinc-600 dark:text-zinc-300">
                 <span className="font-bold text-orange-500">h j k l</span> se mueven como en vim{' '}
-                <span className="text-zinc-400 dark:text-zinc-500">(gg / G también)</span>
             </span>
             <button
                 type="button"
