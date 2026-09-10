@@ -19,6 +19,8 @@ import {
   SiArchlinux,
   SiGnubash,
   SiVim,
+  SiMongodb,
+  SiExpress,
 } from 'react-icons/si';
 import { FaGithub, FaUserGraduate } from 'react-icons/fa';
 import { TbBrandCSharp } from 'react-icons/tb';
@@ -31,6 +33,20 @@ const ACCENT_CLASSES = {
   amber: 'hover:border-amber-400 hover:shadow-[3px_3px_0_0_theme(colors.amber.500)]',
   periwinkle: 'hover:border-periwinkle-400 hover:shadow-[3px_3px_0_0_theme(colors.periwinkle.500)]',
   navy: 'hover:border-navy-400 hover:shadow-[3px_3px_0_0_theme(colors.navy.500)]',
+};
+
+const STACK_HEADER_BG = {
+  orange: 'bg-orange-500',
+  amber: 'bg-amber-500',
+  periwinkle: 'bg-periwinkle-500',
+  navy: 'bg-navy-600',
+};
+
+const STACK_BORDER = {
+  orange: 'border-orange-400 dark:border-orange-500',
+  amber: 'border-amber-400 dark:border-amber-500',
+  periwinkle: 'border-periwinkle-400 dark:border-periwinkle-500',
+  navy: 'border-navy-400 dark:border-navy-500',
 };
 
 function SkillChip({ Icon, label, Custom, accent = 'orange' }) {
@@ -54,16 +70,42 @@ function SkillChip({ Icon, label, Custom, accent = 'orange' }) {
   );
 }
 
-function SkillGroup({ category, items, accent }) {
+function SkillStack({ label, items, accent }) {
+  return (
+    <HoverLift>
+      <div className={`flex flex-col border-2 ${STACK_BORDER[accent]} cursor-default`}>
+        <div className={`px-2 py-1 text-[10px] font-black uppercase tracking-widest text-white ${STACK_HEADER_BG[accent]}`}>
+          {label}
+        </div>
+        <div className="flex flex-wrap gap-2 p-2 bg-white dark:bg-zinc-900">
+          {items.map((it) => (
+            <div
+              key={it.label}
+              className={`flex flex-col items-center gap-1 rounded-none px-2 py-2 border ${STACK_BORDER[accent]} w-16`}
+            >
+              <it.Icon className="h-5 w-5 text-zinc-700 dark:text-zinc-300" aria-hidden="true" />
+              <p className="text-[10px] text-zinc-600 dark:text-zinc-300 text-center leading-tight">{it.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </HoverLift>
+  );
+}
+
+function SkillGroup({ category, items, stacks, accent }) {
   return (
     <Reveal>
       <div className="flex flex-col sm:flex-row sm:items-start gap-4 py-6 border-b border-stone-200 dark:border-zinc-800 last:border-0">
         <span className="eyebrow-bracket text-xs font-bold uppercase tracking-widest text-periwinkle-600 dark:text-periwinkle-400 sm:w-40 flex-shrink-0 pt-2">
           {category}
         </span>
-        <div className="flex flex-wrap gap-3">
+        <div className="flex flex-wrap items-start gap-3">
           {items.map((it) => (
             <SkillChip key={it.label} accent={accent} {...it} />
+          ))}
+          {(stacks ?? []).map((s) => (
+            <SkillStack key={s.label} {...s} />
           ))}
         </div>
       </div>
@@ -89,12 +131,22 @@ export default function Skills() {
       category: 'Frameworks',
       items: [
         { Icon: SiCmake, label: 'CMake' },
-        { Icon: SiReact, label: 'React' },
         { Icon: SiVite, label: 'Vite' },
-        { Icon: SiNodedotjs, label: 'Node.js' },
         { Icon: SiBootstrap, label: 'Bootstrap' },
         { Icon: SiReactrouter, label: 'React Router' },
         { Icon: SiTailwindcss, label: 'Tailwind' },
+      ],
+      stacks: [
+        {
+          label: 'MERN',
+          accent: 'navy',
+          items: [
+            { Icon: SiMongodb, label: 'MongoDB' },
+            { Icon: SiExpress, label: 'Express' },
+            { Icon: SiReact, label: 'React' },
+            { Icon: SiNodedotjs, label: 'Node.js' },
+          ],
+        },
       ],
     },
     {
@@ -144,7 +196,7 @@ export default function Skills() {
   return (
     <div>
       {groups.map((g, i) => (
-        <SkillGroup key={g.category} category={g.category} items={g.items} accent={accents[i % accents.length]} />
+        <SkillGroup key={g.category} category={g.category} items={g.items} stacks={g.stacks} accent={accents[i % accents.length]} />
       ))}
     </div>
   );

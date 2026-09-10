@@ -12,13 +12,21 @@ function isTypingTarget(el) {
     return tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || el.isContentEditable;
 }
 
+function isDesktopDevice() {
+    if (typeof window === 'undefined' || !window.matchMedia) return false;
+    return window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+}
+
 export default function VimNav() {
     const navigate = useNavigate();
     const { pathname } = useLocation();
     const lastGRef = useRef(0);
-    const [hintVisible, setHintVisible] = useState(() => !sessionStorage.getItem('vimHintDismissed'));
+    const [isDesktop] = useState(isDesktopDevice);
+    const [hintVisible, setHintVisible] = useState(() => isDesktopDevice() && !sessionStorage.getItem('vimHintDismissed'));
 
     useEffect(() => {
+        if (!isDesktop) return;
+
         const dismissHint = () => {
             setHintVisible(false);
             sessionStorage.setItem('vimHintDismissed', '1');
@@ -71,9 +79,9 @@ export default function VimNav() {
 
         window.addEventListener('keydown', handleKeyDown);
         return () => window.removeEventListener('keydown', handleKeyDown);
-    }, [pathname, navigate]);
+    }, [pathname, navigate, isDesktop]);
 
-    if (!hintVisible) return null;
+    if (!isDesktop || !hintVisible) return null;
 
     return (
         <div className="fixed bottom-4 left-4 z-[60] flex items-center gap-2 bg-white dark:bg-zinc-900 border-2 border-zinc-900 dark:border-zinc-700 px-3 py-2 shadow-[3px_3px_0_0_theme(colors.orange.500)] text-xs">
