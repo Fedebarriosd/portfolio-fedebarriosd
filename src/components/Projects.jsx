@@ -43,7 +43,7 @@ const categories = [
     ],
   },
   {
-    name: 'Software & Juegos',
+    name: 'Entretenimiento & Juegos',
     projects: [
       {
         title: 'Ajedrez en C',
@@ -60,6 +60,14 @@ const categories = [
         href: 'https://github.com/Fedebarriosd/ASCII-cam',
         cta: 'Ver en GitHub',
         tech: 'Python · OBS Studio',
+      },
+      {
+        title: 'WT Rangefinder',
+        desc: 'Herramienta para estimar distancias en el minimapa de War Thunder a mano.',
+        img: '/wt-rangefinder.png',
+        href: 'https://github.com/Fedebarriosd/wt-rangefinder',
+        cta: 'Ver en GitHub',
+        tech: 'C++ · SDL2 · Dear ImGui · CMake',
       },
     ],
   },

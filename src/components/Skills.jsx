@@ -23,7 +23,6 @@ import {
   SiExpress,
 } from 'react-icons/si';
 import { FaGithub, FaUserGraduate } from 'react-icons/fa';
-import { TbBrandCSharp } from 'react-icons/tb';
 import { PiFlowArrowBold } from 'react-icons/pi';
 import ReactCountryFlag from 'react-country-flag';
 import { Reveal, HoverLift } from './Reveal';
@@ -120,7 +119,6 @@ export default function Skills() {
       items: [
         { Icon: SiC, label: 'C' },
         { Icon: SiCplusplus, label: 'C++' },
-        { Icon: TbBrandCSharp, label: 'C#' },
         { Icon: SiJavascript, label: 'JavaScript' },
         { Icon: SiHtml5, label: 'HTML' },
         { Icon: SiCss, label: 'CSS' },
@@ -154,6 +152,7 @@ export default function Skills() {
       items: [
         { Icon: SiPostgresql, label: 'PostgreSQL' },
         { Icon: SiSqlite, label: 'SQLite' },
+        { Icon: SiMongodb, label: 'MongoDB' },
       ],
     },
     {
